@@ -112,11 +112,11 @@ class MainController
 
     public function render_user($user_id)
     {
-        // Récupérer les données de l'utilisateur
-        $user = $this->apiModel->get_user($user_id);
-        
         // Récupérer les données du menu dans le header
         $menu = $this->get_header();
+
+        // Récupérer les données de l'utilisateur
+        $user = $this->apiModel->get_user($user_id);
 
         // Inclure la vue correspondante
         echo $this->pages->render(
@@ -130,19 +130,27 @@ class MainController
         );
     }
 
-    public function render_test()
+    public function render_products()
     {
         // Récupérer les données du menu dans le header
         $menu = $this->get_header();
 
+        // Récupérer les données produits
+        $products = $this->apiModel->get_products();
+
         // Inclure la vue correspondante
         echo $this->pages->render(
-            'user/user',
+            'product/products',
             [
-                'title' => 'Page de profil',
-                'title_in_page' => 'Page de profil',
+                'title' => 'Nos produits',
+                'title_in_page' => 'Nos produits',
                 'menu' => $menu
             ]
         );
+    }
+
+    public function render_product()
+    {
+
     }
 }

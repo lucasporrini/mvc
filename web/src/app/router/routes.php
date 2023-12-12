@@ -12,7 +12,10 @@ $router->get('/register', [$MainController, 'render_register']);
 $router->post('/register', [$MainController, 'register']);
 
 $router->get('/logout', [$MainController, 'logout']);
-$router->get('/user', [$MainController, 'render_test']);
+
+// Route pour afficher les pages du site
+$router->get('/products', [$MainController, 'render_products']);
+$router->get('/product/:slug', [$MainController, 'render_product'])->with('slug', '[a-z\-0-9]+');
 $router->get('/user/:id', [$MainController, 'render_user'])->with('id', '[0-9]+');
 
 // Politique de confidentialité

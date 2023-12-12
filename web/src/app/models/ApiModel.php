@@ -54,7 +54,7 @@ class ApiModel
         // Récupérer les données
         $user = $this->api_call('/user/' . $user_id, getenv('token'));
 
-        // Vérifier si l'utilisateur est connecté
+        // Vérifier si l'utilisateur existe
         $json = json_decode($user, JSON_UNESCAPED_UNICODE);
         if($json === false) {
             http_response_code(500);
@@ -64,5 +64,19 @@ class ApiModel
 
         // Retourner les données
         return $json;
+    }
+
+    public function get_products()
+    {
+        // Récupérer les données
+        $products = $this->api_call('/products', getenv('token'));
+
+        // Vérifier si les produits existent
+        $json = json_decode($products, JSON_UNESCAPED_UNICODE);
+        if($json === false) {
+            http_response_code(500);
+            echo json_encode(['error' => 'Erreur interne']);
+            exit;
+        }
     }
 }

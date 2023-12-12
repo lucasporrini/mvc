@@ -64,6 +64,6 @@ class ApiModel
 
     public function get_user($user_id)
     {
-        return $this->db->select('*', 'users', ['id' => $user_id]);
+        return $this->db->simpleSelect('id, email', 'users', ['id' => $user_id]);
     }
 }

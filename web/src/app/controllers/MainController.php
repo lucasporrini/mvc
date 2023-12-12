@@ -144,7 +144,8 @@ class MainController
             [
                 'title' => 'Nos produits',
                 'title_in_page' => 'Nos produits',
-                'menu' => $menu
+                'menu' => $menu,
+                'products' => $products
             ]
         );
     }

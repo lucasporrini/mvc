@@ -66,4 +66,14 @@ class ApiModel
     {
         return $this->db->simpleSelect('id, email', 'users', ['id' => $user_id]);
     }
+
+    public function get_products()
+    {
+        return $this->db->select('*', 'products');
+    }
+
+    public function get_products_with_conditions($conditions, $limit = null)
+    {
+        return $this->db->select('*', 'products', $conditions, $limit);
+    }
 }

@@ -41,4 +41,43 @@ class ApiController
             echo json_encode($user, JSON_UNESCAPED_UNICODE);
         }
     }
+
+    public function get_products()
+    {
+        // On récupère le token dans le header
+        $headers = apache_request_headers();
+        $token = $headers['Authorization'];
+
+        if($this->apiModel->middleware_auth($token)) {
+            // Récupérer les données
+            $products = $this->apiModel->get_products_with_conditions(['available' => 1, 'active' => 1, 'booked' => 0, 'sold' => 0]);
+
+            // Si la liste des produits est inférieur à 36
+            if(count($products) < 36) {
+                // On change les conditions
+                $products = $this->apiModel->get_products_with_conditions(['available' => 1, 'active' => 1, 'booked' => 1, 'sold' => 0]);
+
+                if(count($products) < 36) {
+                    $products = $this->apiModel->get_products();
+                }
+            }
+
+            // Retourner les données en json
+            header('Content-Type: application/json');
+            echo json_encode($products, JSON_UNESCAPED_UNICODE);
+        }
+    }
+
+    public function test()
+    {
+        // On récupère le token dans le header
+        $headers = apache_request_headers();
+        $token = $headers['Authorization'];
+
+        $products = $this->apiModel->get_products_with_conditions([], 2);
+
+        // Retourner les données en json
+        header('Content-Type: application/json');
+        echo json_encode($products, JSON_UNESCAPED_UNICODE);
+    }
 }

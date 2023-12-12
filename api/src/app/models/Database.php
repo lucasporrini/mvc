@@ -16,25 +16,38 @@ class Database {
     public function query($sql, $params = []) {
         try {
             $stmt = $this->pdo->prepare($sql);
-            $stmt->execute($params);
+    
+            foreach ($params as $key => &$val) {
+                if ($key == ':limit') {
+                    $stmt->bindValue($key, (int)$val, PDO::PARAM_INT);
+                } else {
+                    $stmt->bindValue($key, $val);
+                }
+            }
+    
+            $stmt->execute();
             return $stmt;
         } catch (PDOException $e) {
             throw new Exception($e->getMessage());
         }
     }
 
-    public function select($columns, $table, $conditions = []) {
+    public function select($columns, $table, $conditions = [], $limit = null) {
         $sql = "SELECT $columns FROM $table";
         $params = [];
 
-        if (!empty($where)) {
+        if (!empty($conditions)) {
             $whereParts = [];
-            foreach ($where as $key => $value) {
+            foreach ($conditions as $key => $value) {
                 $whereParts[] = "$key = :$key";
                 $params[":$key"] = $value;
             }
-            $whereSQL = implode(' AND ', $whereParts);
-            $sql .= " WHERE $whereSQL";
+            $sql .= " WHERE " . implode(' AND ', $whereParts);
+        }
+    
+        if (!empty($limit)) {
+            $sql .= " LIMIT :limit";
+            $params[':limit'] = $limit;
         }
 
         return $this->query($sql, $params)->fetchAll(PDO::FETCH_ASSOC);
@@ -45,14 +58,13 @@ class Database {
         $sql = "SELECT $columns FROM $table";
         $params = [];
     
-        if (!empty($where)) {
+        if (!empty($conditions)) {
             $whereParts = [];
-            foreach ($where as $key => $value) {
+            foreach ($conditions as $key => $value) {
                 $whereParts[] = "$key = :$key";
                 $params[":$key"] = $value;
             }
-            $whereSQL = implode(' AND ', $whereParts);
-            $sql .= " WHERE $whereSQL";
+            $sql .= " WHERE " . implode(' AND ', $whereParts);
         }
     
         return $this->query($sql, $params)->fetch(PDO::FETCH_ASSOC);

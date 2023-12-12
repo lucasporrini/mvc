@@ -78,5 +78,8 @@ class ApiModel
             echo json_encode(['error' => 'Erreur interne']);
             exit;
         }
+
+        // Retourner les données
+        return $json;
     }
 }

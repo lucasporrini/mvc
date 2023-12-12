@@ -1,0 +1,12 @@
+.is-invalid {
+    background-color: var(--danger-color);
+}
+
+.error {
+    color: var(--danger-color);
+    font-weight: bold;
+}
+
+.dNone {
+    display: none !important;
+}

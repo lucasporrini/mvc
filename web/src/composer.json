@@ -1,0 +1,6 @@
+{
+    "require": {
+        "league/plates": "^3.5",
+        "firebase/php-jwt": "^6.9"
+    }
+}

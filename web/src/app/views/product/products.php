@@ -15,7 +15,7 @@
                 foreach($products as $product) {
             ?>
                 <!-- ====== Template for product card start ====== -->
-                <section class="p-5 py-10 bg-blue-100 text-center rounded-l transform duration-500 hover:-translate-y-2 cursor-pointer">
+                <a href="/product/<?= $product['slug'] ?>" class="p-5 py-10 bg-blue-100 text-center rounded-l transform duration-500 hover:-translate-y-2 cursor-pointer">
                     <img src="https://www.dropbox.com/s/mlor33hzk73rh0c/x14423.png?dl=1" alt="">
                     <div class="space-x-1 flex justify-center mt-10">
                         <?php
@@ -67,7 +67,7 @@
                     <?php
                         }
                     ?>
-                </section>
+                </a>
                     <!-- ====== Template for product card end ====== -->
             <?php
                 }

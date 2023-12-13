@@ -150,8 +150,23 @@ class MainController
         );
     }
 
-    public function render_product()
+    public function render_product($slug)
     {
+        // Récupérer les données du menu dans le header
+        $menu = $this->get_header();
 
+        // Récupérer les données produits
+        $product = $this->apiModel->get_product_by_slug($slug)[0];
+
+        // Inclure la vue correspondante
+        echo $this->pages->render(
+            'product/product',
+            [
+                'title' => 'Nos produits',
+                'title_in_page' => 'Nos produits',
+                'menu' => $menu,
+                'product' => $product
+            ]
+        );
     }
 }

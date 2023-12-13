@@ -68,16 +68,19 @@ class ApiController
         }
     }
 
-    public function test()
+    public function get_product($slug)
     {
         // On récupère le token dans le header
         $headers = apache_request_headers();
         $token = $headers['Authorization'];
 
-        $products = $this->apiModel->get_products_with_conditions([], 2);
+        if($this->apiModel->middleware_auth($token)) {
+            // Récupérer les données
+            $product = $this->apiModel->get_products_with_conditions(['slug' => $slug]);
 
-        // Retourner les données en json
-        header('Content-Type: application/json');
-        echo json_encode($products, JSON_UNESCAPED_UNICODE);
+            // Retourner les données en json
+            header('Content-Type: application/json');
+            echo json_encode($product, JSON_UNESCAPED_UNICODE);
+        }
     }
 }

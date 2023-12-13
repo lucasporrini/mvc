@@ -11,14 +11,14 @@ $_CONFIG["site"]["debug"]               = true; // Mettre à "false" en producti
 define('BASE_URL',                      "http://localhost:8080/");
 
 // Configuration des relatives paths
-define('RELATIVE_PATH_PUBLIC',          'public');
 define('DS',                            DIRECTORY_SEPARATOR);
+define('RELATIVE_PATH_PUBLIC',          'public');
 define('RELATIVE_PATH_APP',             'app');
 
 // Configuration des relatives paths "app"
 define('RELATIVE_PATH_VIEWS',           RELATIVE_PATH_APP . DS . 'views');
 define('RELATIVE_PATH_MODELS',          RELATIVE_PATH_APP . DS . 'models');
-define('RELATIVE_PATH_ControllerS',     RELATIVE_PATH_APP . DS . 'Controllers');
+define('RELATIVE_PATH_CONTROLLERS',     RELATIVE_PATH_APP . DS . 'controllers');
 define('RELATIVE_PATH_ROUTER',          RELATIVE_PATH_APP . DS . 'router');
 define('RELATIVE_PATH_TEMPLATE',        RELATIVE_PATH_APP . DS . 'template');
 
@@ -27,6 +27,7 @@ define('RELATIVE_PATH_ASSETS',          RELATIVE_PATH_PUBLIC . DS . 'assets');
 define('RELATIVE_PATH_CSS',             RELATIVE_PATH_ASSETS . DS . 'css');
 define('RELATIVE_PATH_JS',              RELATIVE_PATH_ASSETS . DS . 'js');
 define('RELATIVE_PATH_IMG',             RELATIVE_PATH_ASSETS . DS . 'img');
+define('RELATIVE_PATH_ICONS',           RELATIVE_PATH_ASSETS . DS . 'icons' . DS);
 define('RELATIVE_PATH_FONTS',           RELATIVE_PATH_ASSETS . DS . 'fonts');
 define('RELATIVE_PATH_UPLOADS',         RELATIVE_PATH_ASSETS . DS . 'uploads');
 

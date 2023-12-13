@@ -82,4 +82,21 @@ class ApiModel
         // Retourner les données
         return $json;
     }
+
+    public function get_product_by_slug($slug)
+    {
+        // Récupérer les données
+        $product = $this->api_call('/product/' . $slug, getenv('token'));
+
+        // Vérifier si le produit existe
+        $json = json_decode($product, JSON_UNESCAPED_UNICODE);
+        if($json === false) {
+            http_response_code(500);
+            echo json_encode(['error' => 'Erreur interne']);
+            exit;
+        }
+
+        // Retourner les données
+        return $json;
+    }
 }

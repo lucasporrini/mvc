@@ -13,7 +13,8 @@
     }    
 
     function findSVGByName($name) {
-        $svg = file_get_contents(BASE_URL . "public/assets/icons/" . $name . ".svg");
+        $path = $_SERVER['DOCUMENT_ROOT'] . "/public/assets/icons/" . $name . ".svg";
+        $svg = file_get_contents($path);
         return $svg;
     }
 

@@ -99,4 +99,21 @@ class ApiModel
         // Retourner les données
         return $json;
     }
+
+    public function get_company()
+    {
+        // Récupérer les données
+        $company = $this->api_call('/company', getenv('token'));
+
+        // Vérifier si la société existe
+        $json = json_decode($company, JSON_UNESCAPED_UNICODE);
+        if($json === false) {
+            http_response_code(500);
+            echo json_encode(['error' => 'Erreur interne']);
+            exit;
+        }
+
+        // Retourner les données
+        return $json;
+    }
 }

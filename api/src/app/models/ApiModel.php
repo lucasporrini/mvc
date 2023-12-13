@@ -76,4 +76,9 @@ class ApiModel
     {
         return $this->db->select('*', 'products', $conditions, $limit);
     }
+
+    public function get_company()
+    {
+        return $this->db->select('*', 'company');
+    }
 }

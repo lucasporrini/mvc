@@ -158,6 +158,43 @@ class MainController
         // Récupérer les données produits
         $product = $this->apiModel->get_product_by_slug($slug)[0];
 
+        $translates = [
+            "id" => "id",
+            "title" => "titre",
+            "height" => "hauteur",
+            "width" => "largeur",
+            "depth" => "profondeur",
+            "brand" => "marque",
+            "reference" => "référence",
+            "material" => "matière",
+            "assembly" => "montage",
+            "code_article" => "code article",
+            "trust" => "indice de confiance",
+            "quantity" => "quantité",
+            "description" => "description",
+            "caption" => "légende",
+            "price_new" => "prix neuf",
+            "price_unite" => "prix unitaire",
+            "unite" => "unité",
+            "packaging" => "conditionnement",
+            "state" => "état",
+            "slug" => "slug",
+            "photos" => "photos",
+            "category_id" => "id catégorie",
+            "storage_location" => "emplacement de stockage",
+            "location_id" => "id emplacement",
+            "available" => "disponible",
+            "availability_date" => "date de disponibilité",
+            "active" => "actif",
+            "booked" => "réservé",
+            "created_at" => "créé le",
+            "sold" => "vendu",
+            "sold_at" => "vendu le",
+        ];
+
+        // Récupérer les données entreprise
+        $company = $this->apiModel->get_company();
+
         // Inclure la vue correspondante
         echo $this->pages->render(
             'product/product',
@@ -165,7 +202,9 @@ class MainController
                 'title' => 'Nos produits',
                 'title_in_page' => 'Nos produits',
                 'menu' => $menu,
-                'product' => $product
+                'product' => $product,
+                'translates' => $translates,
+                'company' => $company
             ]
         );
     }

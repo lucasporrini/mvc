@@ -55,7 +55,7 @@
                 <div class="w-full px-4 md:w-1/2">
                     <div class="lg:pl-20">
                         <div class="mb-6 ">
-                            <h2 class="max-w-xl mt-6 mb-6 text-xl font-semibold leading-loose tracking-wide text-gray-700 md:text-2xl dark:text-gray-300">
+                            <h2 class="flex items-center max-w-xl mt-6 mb-6 text-xl font-semibold leading-loose tracking-wide text-gray-700 md:text-2xl dark:text-gray-300">
                                 <?= $product['title'] ?>
                                 <?php
                                     // Calcul de la différence entre $product['created_at] et la date actuelle
@@ -66,7 +66,7 @@
                                     // Si la différence est inférieure à 7 jours, on affiche le badge "Nouveauté"
                                     if($interval->days < 7) {
                                 ?>
-                                    <span class="px-2.5 py-0.5 text-xs text-red-600 bg-red-100 dark:bg-gray-700 rounded-xl dark:text-gray-200">Nouveauté</span>
+                                    <span class="ml-3 px-2.5 py-0.5 text-xs text-green-600 bg-green-200 rounded-xl">Nouveauté</span>
                                 <?php
                                     }
                                 ?>
@@ -100,7 +100,7 @@
                                         }
                                     ?>
                                 </ul>
-                                <a class="mb-4 text-xs underline hover:text-red-600 dark:hover:text-gray-300 lg:mb-0" href="#">
+                                <a class="mb-4 text-xs underline hover:text-gray-500 lg:mb-0" href="#">
                                     Qu'est ce que l'indice de confiance ?
                                 </a>
                             </div>

@@ -194,7 +194,7 @@ class MainController
         ];
 
         // Récupérer les données des catégories
-        $categories = $this->apiModel->get_categorie_by_id($product['category_id']);
+        $categorie = $this->apiModel->get_categorie_by_id($product['category_id']);
 
         // Récupérer les données entreprise
         $company = $this->apiModel->get_company();
@@ -209,7 +209,7 @@ class MainController
                 'product' => $product,
                 'translates' => $translates,
                 'company' => $company,
-                'categories' => $categories
+                'categorie' => $categorie
             ]
         );
     }

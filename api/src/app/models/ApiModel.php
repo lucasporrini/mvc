@@ -84,6 +84,6 @@ class ApiModel
 
     public function get_categorie_by_id($id)
     {
-        return $this->db->select('*', 'categories', ['id' => $id]);
+        return $this->db->simpleSelect('*', 'categories', ['id' => $id]);
     }
 }

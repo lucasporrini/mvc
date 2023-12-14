@@ -9,7 +9,7 @@
 ?>
 
 <main>
-    <?php echo "<pre>";print_r($categories);echo "</pre>"; ?>
+    <?php echo "<pre>";print_r($categorie);echo "</pre>"; ?>
     <section class="py-10 font-poppins dark:bg-gray-800">
         <div class="max-w-6xl px-4 mx-auto">
             <div class="flex flex-wrap mb-24 -mx-4">
@@ -53,7 +53,7 @@
                     </div>
                 </div>
                 <div class="w-full px-4 md:w-1/2">
-                    <div class="lg:pl-20">
+                    <div class="">
                         <div class="mb-6 ">
                             <h2 class="flex items-center max-w-xl mt-6 mb-3 text-xl font-semibold leading-loose tracking-wide text-gray-700 md:text-2xl dark:text-gray-300">
                                 <?= $product['title'] ?>
@@ -110,6 +110,46 @@
                             </p>
                         </div>
                         <div class="mb-6">
+                            <h2 class="mb-2 text-lg font-bold text-gray-700">Informations relatives à l'article :</h2>
+                            <div class="bg-gray-100 dark:bg-gray-700 rounded-xl">
+                                <div class="p-3 lg:p-5 ">
+                                    <div class="flex flex-wrap flex-col justify-center gap-x-10 gap-y-4">
+                                        <?php
+                                            foreach ($product as $key => $value) :
+                                                if($key != "height" && $key != "depth" && $key != "packaging" && $key != "id" && $key != "width" && $key != "price_new" && $key != "price_unite" && $key != "unite" && $key != "trust" && $key != "created_at" && $key != "slug" && $key != "photos" && $key != "category_id" && $key != "storage_location" && $key != "location_id" && $key != "available" && $key != "availability_date" && $key != "active" && $key != "booked" && $key != "description" && $key != "quantity" && $key != "brand" && $key != "reference" && $key != "material" && $key != "assembly" && $key != "code_article" && $key != "state" && $key != "sold_at" && $key != "sold") :
+                                        ?>
+                                                    <div class="w-full mb-4 md:w-2/5">
+                                                        <div class="flex ml-3">
+                                                            <div>
+                                                                <p class="mb-2 text-sm font-medium text-gray-500">
+                                                                    <?= isset($translates[$key]) ? ucfirst($translates[$key]) : ucfirst($key) ?>
+                                                                </p>
+                                                                <h2 class="text-base font-semibold text-gray-700">
+                                                                    <?= $value ?>
+                                                                </h2>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                        <?php
+                                                endif;
+                                            endforeach;
+                                        ?>
+                                            <div class="w-full mb-4 md:w-2/5">
+                                                <div class="flex ml-3">
+                                                    <div>
+                                                        <p class="mb-2 text-sm font-medium text-gray-500">
+                                                            Catégorie
+                                                        </p>
+                                                        <h2 class="text-base font-semibold text-gray-700">
+                                                            <?= $categorie['name'] ?>
+                                                        </h2>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
                             <h2 class="mb-2 text-lg font-bold text-gray-700">Informations techniques :</h2>
                             <div class="bg-gray-100 dark:bg-gray-700 rounded-xl">
                                 <div class="p-3 lg:p-5 ">
@@ -143,17 +183,21 @@
                             </div>
                             <div class="py-6 mb-6 border-t border-b border-gray-200">                                   
                                     <?php
-                                        if($product['quantity'] < 5 && $product['quantity'] > 0 && $product['booked'] == 0):
+                                        if($product['quantity'] < 5 && $product['quantity'] > 1 && $product['booked'] == 0):
                                     ?>
                                         <span class="mb-2 text-red-500 font-bold">Il n'en reste que <?= $product['quantity'] ?> !</span>
                                     <?php
                                         elseif($product['quantity'] == 1):
                                     ?>
-                                        <span class="mb-2 text-red-500 font-bold">Il n'en reste qu'un !</span>
+                                        <span class="mb-2 text-red-500 font-bold">Dernier article en stock !</span>
                                     <?php
                                         elseif($product['quantity'] > 5):
                                     ?>
                                         <span class="font-bold text-green-500">En stock</span>
+                                    <?php
+                                        elseif($product['quantity'] == 0):
+                                    ?>
+                                        <span class="font-bold text-red-500">Rupture de stock</span>
                                     <?php
                                         elseif($product['booked'] == 1):
                                     ?>
@@ -177,7 +221,7 @@
                                     ?>
                                 </div>
                                 <div class="flex gap-4 mb-6">
-                                    <a href="#" class="w-full px-4 py-3 text-center text-gray-100 bg-blue-400 border border-transparent hover:bg-blue-600 rounded-xl">
+                                    <a href="#" class="w-full px-4 py-3 text-center text-gray-100 bg-blue-400 border border-transparent hover:bg-blue-600 rounded-xl <?= $product['quantity'] == 0 || $product['booked'] == 1 || $product['sold'] == 1 ? 'bg-gray-500 text-white hover:bg-gray-600 cursor-not-allowed" disabled' : "" ?>">
                                         Reserver maintenant
                                     </a>
                                 </div>

@@ -86,4 +86,9 @@ class ApiModel
     {
         return $this->db->simpleSelect('*', 'categories', ['id' => $id]);
     }
+
+    public function get_location_by_id($id)
+    {
+        return $this->db->simpleSelect('*', 'locations', ['id' => $id]);
+    }
 }

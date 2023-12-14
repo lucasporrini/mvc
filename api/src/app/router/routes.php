@@ -10,5 +10,7 @@ $router->get('/products', [$ApiController, 'get_products']);
 $router->get('/product/:slug', [$ApiController, 'get_product'])->with('slug', '[a-z\-0-9]+');
 $router->get('/company', [$ApiController, 'get_company']);
 $router->get('/categorie/:id', [$ApiController, 'get_categorie_by_id'])->with('id', '[0-9]+');
+$router->get('/chantier/:id', [$ApiController, 'get_location_by_id'])->with('id', '[0-9]+');
+$router->get('/address', [$ApiController, 'get_company_address']);
 
 $router->run();

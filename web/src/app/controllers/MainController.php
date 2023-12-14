@@ -158,6 +158,20 @@ class MainController
         // Récupérer les données produits
         $product = $this->apiModel->get_product_by_slug($slug)[0];
 
+        // Si le produit n'existe plus ou qu'il n'est pas activé, on redirige vers la page d'article introuvable
+        if($product['active'] == 0 || empty($product)) {
+            echo $this->pages->render(
+                'product/error',
+                [
+                    'title' => 'Article introuvable',
+                    'title_in_page' => 'Article introuvable',
+                    'message' => 'Il semblerait que cet article n\'existe plus.',
+                    'submessage' => 'Désolé, nous ne parvenons pas à trouver votre article.',
+                    'menu' => $menu
+                ]
+            );
+        };
+
         // Traduire les données
         $translates = [
             "id" => "id",
@@ -196,6 +210,13 @@ class MainController
         // Récupérer les données des catégories
         $categorie = $this->apiModel->get_categorie_by_id($product['category_id']);
 
+        // Récupérer les informations du chantier
+        if ($product['storage_location'] == "chantier") {
+            $location = $this->apiModel->get_chantier_by_id($product['location_id']);
+        } else {
+            $location = $this->apiModel->get_company_address();
+        }
+
         // Récupérer les données entreprise
         $company = $this->apiModel->get_company();
 
@@ -209,7 +230,8 @@ class MainController
                 'product' => $product,
                 'translates' => $translates,
                 'company' => $company,
-                'categorie' => $categorie
+                'categorie' => $categorie,
+                'location' => $location
             ]
         );
     }

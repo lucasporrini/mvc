@@ -115,4 +115,43 @@ class ApiController
             echo json_encode($categories, JSON_UNESCAPED_UNICODE);
         }
     }
+
+    public function get_location_by_id($id)
+    {
+        // On récupère le token dans le header
+        $headers = apache_request_headers();
+        $token = $headers['Authorization'];
+
+        if($this->apiModel->middleware_auth($token)) {
+            // Récupérer les données
+            $location = $this->apiModel->get_location_by_id($id);
+
+            // Retourner les données en json
+            header('Content-Type: application/json');
+            echo json_encode($location, JSON_UNESCAPED_UNICODE);
+        }
+    }
+
+    public function get_company_address()
+    {
+        // On récupère le token dans le header
+        $headers = apache_request_headers();
+        $token = $headers['Authorization'];
+
+        if($this->apiModel->middleware_auth($token)) {
+            // Récupérer les données
+            $company = $this->apiModel->get_company();
+
+            // Récupérer l'adresse de la société
+            foreach($company[0] as $key => $value) {
+                if($key === 'address') {
+                    $company_address = $value;
+                }
+            };
+
+            // Retourner les données en json
+            header('Content-Type: application/json');
+            echo json_encode($company, JSON_UNESCAPED_UNICODE);
+        }
+    }
 }

@@ -133,4 +133,38 @@ class ApiModel
         // Retourner les données
         return $json;
     }
+
+    public function get_chantier_by_id($id)
+    {
+        // Récupérer les données
+        $chantier = $this->api_call('/chantier/' .$id, getenv('token'));
+
+        // Vérifier si les chantiers existent
+        $json = json_decode($chantier, JSON_UNESCAPED_UNICODE);
+        if($json === false) {
+            http_response_code(500);
+            echo json_encode(['error' => 'Erreur interne']);
+            exit;
+        }
+
+        // Retourner les données
+        return $json;
+    }
+
+    public function get_company_address()
+    {
+        // Récupérer les données
+        $address = $this->api_call('/address', getenv('token'));
+
+        // Vérifier si la société existe
+        $json = json_decode($address, JSON_UNESCAPED_UNICODE);
+        if($json === false) {
+            http_response_code(500);
+            echo json_encode(['error' => 'Erreur interne']);
+            exit;
+        }
+        
+        // Retourner les données
+        return $json[0]['address'];
+    }
 }

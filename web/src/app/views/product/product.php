@@ -9,7 +9,7 @@
 ?>
 
 <main>
-    <?php echo "<pre>";print_r($categorie);echo "</pre>"; ?>
+    <?php echo "<pre>";print_r($location);echo "</pre>"; ?>
     <section class="py-10 font-poppins dark:bg-gray-800">
         <div class="max-w-6xl px-4 mx-auto">
             <div class="flex flex-wrap mb-24 -mx-4">
@@ -209,15 +209,15 @@
                                         <span class="text-gray-600 font-normal">L'article est disponible <?= $product['storage_location'] == "chantier" ? "sur </span>" . $product['storage_location'] : "à notre </span>" . $product['storage_location'] ?>
                                     </p>
                                     <?php
-                                        if($product['storage_location'] == "chantier") {
+                                        if($product['storage_location'] == "chantier"):
                                     ?>
-                                        <p class="mt-2 text-sm text-gray-600">Info chantier</p>
+                                        <p class="mt-2 text-sm text-gray-600">L'article est pour le moment sur un chantier à <span class="font-bold"><?= $location['place'] ?></span>. Quand il sera disponible au retrait, plus ample informations vous serons communiquées.</p>
                                     <?php
-                                        } else if($product['storage_location'] == "dépôt") {
+                                        elseif($product['storage_location'] == "dépôt"):
                                     ?>
                                         <p class="mt-2 text-sm text-gray-600">Info magasin</p>
                                     <?php
-                                        }
+                                        endif;
                                     ?>
                                 </div>
                                 <div class="flex gap-4 mb-6">

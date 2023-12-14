@@ -158,6 +158,7 @@ class MainController
         // Récupérer les données produits
         $product = $this->apiModel->get_product_by_slug($slug)[0];
 
+        // Traduire les données
         $translates = [
             "id" => "id",
             "title" => "titre",
@@ -192,6 +193,9 @@ class MainController
             "sold_at" => "vendu le",
         ];
 
+        // Récupérer les données des catégories
+        $categories = $this->apiModel->get_categorie_by_id($product['category_id']);
+
         // Récupérer les données entreprise
         $company = $this->apiModel->get_company();
 
@@ -204,7 +208,8 @@ class MainController
                 'menu' => $menu,
                 'product' => $product,
                 'translates' => $translates,
-                'company' => $company
+                'company' => $company,
+                'categories' => $categories
             ]
         );
     }

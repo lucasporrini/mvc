@@ -9,7 +9,7 @@
 ?>
 
 <main>
-    <?php echo "<pre>";print_r($company);echo "</pre>"; ?>
+    <?php echo "<pre>";print_r($categories);echo "</pre>"; ?>
     <section class="py-10 font-poppins dark:bg-gray-800">
         <div class="max-w-6xl px-4 mx-auto">
             <div class="flex flex-wrap mb-24 -mx-4">
@@ -55,7 +55,7 @@
                 <div class="w-full px-4 md:w-1/2">
                     <div class="lg:pl-20">
                         <div class="mb-6 ">
-                            <h2 class="flex items-center max-w-xl mt-6 mb-6 text-xl font-semibold leading-loose tracking-wide text-gray-700 md:text-2xl dark:text-gray-300">
+                            <h2 class="flex items-center max-w-xl mt-6 mb-3 text-xl font-semibold leading-loose tracking-wide text-gray-700 md:text-2xl dark:text-gray-300">
                                 <?= $product['title'] ?>
                                 <?php
                                     // Calcul de la différence entre $product['created_at] et la date actuelle
@@ -113,45 +113,54 @@
                             <h2 class="mb-2 text-lg font-bold text-gray-700">Informations techniques :</h2>
                             <div class="bg-gray-100 dark:bg-gray-700 rounded-xl">
                                 <div class="p-3 lg:p-5 ">
-                                    <div class="p-2 rounded-xl lg:p-6 dark:bg-gray-800 bg-gray-50">
-                                        <div class="flex flex-wrap justify-center gap-x-10 gap-y-4">
-                                            <?php
-                                                foreach ($product as $key => $value) :
-                                                    if($key != "title" && $key != "id" && $key != "caption" && $key != "price_new" && $key != "price_unite" && $key != "unite" && $key != "trust" && $key != "created_at" && $key != "slug" && $key != "photos" && $key != "category_id" && $key != "storage_location" && $key != "location_id" && $key != "available" && $key != "availability_date" && $key != "active" && $key != "booked" && $key != "description" && $key != "quantity" && $key != "brand" && $key != "reference" && $key != "material" && $key != "assembly" && $key != "code_article" && $key != "state" && $key != "sold_at" && $key != "sold") :
-                                            ?>
-                                                        <div class="w-full mb-4 md:w-2/5">
-                                                            <div class="flex ">
-                                                                <span class="mr-3 text-gray-500">
-                                                                    <?= findSVGByName($key); ?>
-                                                                </span>
-                                                                <div>
-                                                                    <p class="mb-2 text-sm font-medium text-gray-500">
-                                                                        <?= isset($translates[$key]) ? ucfirst($translates[$key]) : ucfirst($key) ?>
-                                                                    </p>
-                                                                    <h2 class="text-base font-semibold text-gray-700">
-                                                                        <?= $value ?> <?= $key == "packaging" ? "" : "m" ?>
-                                                                    </h2>
-                                                                </div>
+                                    <div class="flex flex-wrap justify-center gap-x-10 gap-y-4">
+                                        <?php
+                                            foreach ($product as $key => $value) :
+                                                if($key != "title" && $key != "id" && $key != "caption" && $key != "price_new" && $key != "price_unite" && $key != "unite" && $key != "trust" && $key != "created_at" && $key != "slug" && $key != "photos" && $key != "category_id" && $key != "storage_location" && $key != "location_id" && $key != "available" && $key != "availability_date" && $key != "active" && $key != "booked" && $key != "description" && $key != "quantity" && $key != "brand" && $key != "reference" && $key != "material" && $key != "assembly" && $key != "code_article" && $key != "state" && $key != "sold_at" && $key != "sold") :
+                                        ?>
+                                                    <div class="w-full mb-4 md:w-2/5">
+                                                        <div class="flex ">
+                                                            <span class="mr-3 text-gray-500">
+                                                                <?= findSVGByName($key); ?>
+                                                            </span>
+                                                            <div>
+                                                                <p class="mb-2 text-sm font-medium text-gray-500">
+                                                                    <?= isset($translates[$key]) ? ucfirst($translates[$key]) : ucfirst($key) ?>
+                                                                </p>
+                                                                <h2 class="text-base font-semibold text-gray-700">
+                                                                    <?= $value ?> <?= $key == "packaging" ? "" : "m" ?>
+                                                                </h2>
                                                             </div>
                                                         </div>
-                                            <?php
-                                                    endif;
-                                                endforeach;
-                                            ?>
-                                            </div>
+                                                    </div>
+                                        <?php
+                                                endif;
+                                            endforeach;
+                                        ?>
                                         </div>
                                     </div>
                                 </div>
                             </div>
-                            <div class="py-6 mb-6 border-t border-b border-gray-200">
-                                <?php
-                                    if($product['quantity'] < 1 && $product['booked'] == 0) {
-                                ?>
-                                    <span class="mb-2 text-red-500 font-bold">Rupture de stock</span>
+                            <div class="py-6 mb-6 border-t border-b border-gray-200">                                   
                                     <?php
-                                    } else {
-                                        ?>
-                                    <span class="text-base text-gray-600">En stock</span>
+                                        if($product['quantity'] < 5 && $product['quantity'] > 0 && $product['booked'] == 0):
+                                    ?>
+                                        <span class="mb-2 text-red-500 font-bold">Il n'en reste que <?= $product['quantity'] ?> !</span>
+                                    <?php
+                                        elseif($product['quantity'] == 1):
+                                    ?>
+                                        <span class="mb-2 text-red-500 font-bold">Il n'en reste qu'un !</span>
+                                    <?php
+                                        elseif($product['quantity'] > 5):
+                                    ?>
+                                        <span class="font-bold text-green-500">En stock</span>
+                                    <?php
+                                        elseif($product['booked'] == 1):
+                                    ?>
+                                        <span class="font-bold text-yellow-500">Réservé</span>
+                                    <?php
+                                        endif;
+                                    ?>
                                     <p class="mt-2 text-sm text-gray-600 font-bold">
                                         <span class="text-gray-600 font-normal">L'article est disponible <?= $product['storage_location'] == "chantier" ? "sur </span>" . $product['storage_location'] : "à notre </span>" . $product['storage_location'] ?>
                                     </p>
@@ -166,9 +175,6 @@
                                     <?php
                                         }
                                     ?>
-                                <?php
-                                    }
-                                ?>
                                 </div>
                                 <div class="flex gap-4 mb-6">
                                     <a href="#" class="w-full px-4 py-3 text-center text-gray-100 bg-blue-400 border border-transparent hover:bg-blue-600 rounded-xl">

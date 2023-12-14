@@ -116,4 +116,21 @@ class ApiModel
         // Retourner les données
         return $json;
     }
+
+    public function get_categorie_by_id($id)
+    {
+        // Récupérer les données
+        $categories = $this->api_call('/categorie/:id', getenv('token'));
+
+        // Vérifier si les catégories existent
+        $json = json_decode($categories, JSON_UNESCAPED_UNICODE);
+        if($json === false) {
+            http_response_code(500);
+            echo json_encode(['error' => 'Erreur interne']);
+            exit;
+        }
+
+        // Retourner les données
+        return $json;
+    }
 }

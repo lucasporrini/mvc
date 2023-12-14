@@ -81,4 +81,9 @@ class ApiModel
     {
         return $this->db->select('*', 'company');
     }
+
+    public function get_categorie_by_id($id)
+    {
+        return $this->db->select('*', 'categories', ['id' => $id]);
+    }
 }

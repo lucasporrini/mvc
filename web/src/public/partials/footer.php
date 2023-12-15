@@ -2,7 +2,7 @@
   <div>
     <h3 class="footer-title">Services</h3> 
     <?php
-        foreach ($menu as $item) {
+        foreach ($header_informations['menu'] as $item) {
             if($item['is_parent'] == 1) {
                 echo '<a class="link link-hover" href="' . $item['url'] . '">' . $item['name'] . '</a>';
             }
@@ -10,11 +10,12 @@
     ?>
   </div> 
   <div>
-    <h3 class="footer-title">Company</h3> 
-    <a class="link link-hover">About us</a>
-    <a class="link link-hover">Contact</a>
-    <a class="link link-hover">Jobs</a>
-    <a class="link link-hover">Press kit</a>
+    <h3 class="footer-title">Catégories</h3>
+    <?php
+      foreach ($header_informations['categories_in_menu'] as $category) {
+        echo '<a class="link link-hover" href="/category/' . $category['name'] . '">' . $category['name'] . '</a>';
+      }
+    ?>
   </div> 
   <div>
     <h3 class="footer-title">Legal</h3> 

@@ -100,6 +100,22 @@ class ApiModel
         return $json;
     }
 
+    public function get_products_by_category($cat_id)
+    {
+        // Récupérer les données
+        $products = $this->api_call('/products/' . $cat_id, getenv('token'));
+
+        // Vérifier si les produits existent
+        $json = json_decode($products, JSON_UNESCAPED_UNICODE);
+        if($json === false) {
+            http_response_code(500);
+            echo json_encode(['error' => 'Erreur interne']);
+        }
+
+        // Retourner les données
+        return $json;
+    }
+
     public function get_company()
     {
         // Récupérer les données
@@ -107,6 +123,23 @@ class ApiModel
 
         // Vérifier si la société existe
         $json = json_decode($company, JSON_UNESCAPED_UNICODE);
+        if($json === false) {
+            http_response_code(500);
+            echo json_encode(['error' => 'Erreur interne']);
+            exit;
+        }
+
+        // Retourner les données
+        return $json;
+    }
+
+    public function get_categories()
+    {
+        // Récupérer les données
+        $categories = $this->api_call('/categories', getenv('token'));
+
+        // Vérifier si les catégories existent
+        $json = json_decode($categories, JSON_UNESCAPED_UNICODE);
         if($json === false) {
             http_response_code(500);
             echo json_encode(['error' => 'Erreur interne']);
@@ -128,6 +161,38 @@ class ApiModel
             http_response_code(500);
             echo json_encode(['error' => 'Erreur interne']);
             exit;
+        }
+
+        // Retourner les données
+        return $json;
+    }
+
+    public function get_categorie_by_slug($slug)
+    {
+        // Récupérer les données
+        $categorie = $this->api_call('/categorie/' .$slug, getenv('token'));
+
+        // Vérifier si les catégories existent
+        $json = json_decode($categorie, JSON_UNESCAPED_UNICODE);
+        if($json === false) {
+            http_response_code(500);
+            echo json_encode(['error' => 'Erreur interne']);
+        }
+
+        // Retourner les données
+        return $json;
+    }
+
+    public function get_subcategories()
+    {
+        // Récupérer les données
+        $subcategories = $this->api_call('/subcategories', getenv('token'));
+
+        // Vérifier si les catégories existent
+        $json = json_decode($subcategories, JSON_UNESCAPED_UNICODE);
+        if($json === false) {
+            http_response_code(500);
+            echo json_encode(['error' => 'Erreur interne']);
         }
 
         // Retourner les données
@@ -165,6 +230,6 @@ class ApiModel
         }
         
         // Retourner les données
-        return $json[0]['address'];
+        return $json;
     }
 }

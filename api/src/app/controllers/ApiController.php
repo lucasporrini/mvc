@@ -84,6 +84,22 @@ class ApiController
         }
     }
 
+    public function get_products_by_category($slug)
+    {
+        // On récupère le token dans le header
+        $headers = apache_request_headers();
+        $token = $headers['Authorization'];
+        
+        if($this->apiModel->middleware_auth($token)) {
+            // Récupérer les données
+            $products = $this->apiModel->get_products_by_category($slug);
+
+            // Retourner les données en json
+            header('Content-Type: application/json');
+            echo json_encode($products, JSON_UNESCAPED_UNICODE);
+        }
+    }
+
     public function get_company()
     {
         // On récupère le token dans le header
@@ -100,6 +116,22 @@ class ApiController
         }
     }
 
+    public function get_categories()
+    {
+        // On récupère le token dans le header
+        $headers = apache_request_headers();
+        $token = $headers['Authorization'];
+
+        if($this->apiModel->middleware_auth($token)) {
+            // Récupérer les données
+            $categories = $this->apiModel->get_categories();
+
+            // Retourner les données en json
+            header('Content-Type: application/json');
+            echo json_encode($categories, JSON_UNESCAPED_UNICODE);
+        }
+    }
+
     public function get_categorie_by_id($id)
     {
         // On récupère le token dans le header
@@ -109,6 +141,38 @@ class ApiController
         if($this->apiModel->middleware_auth($token)) {
             // Récupérer les données
             $categories = $this->apiModel->get_categorie_by_id($id);
+
+            // Retourner les données en json
+            header('Content-Type: application/json');
+            echo json_encode($categories, JSON_UNESCAPED_UNICODE);
+        }
+    }
+
+    public function get_categorie_by_slug($slug)
+    {
+        // On récupère le token dans le header
+        $headers = apache_request_headers();
+        $token = $headers['Authorization'];
+
+        if($this->apiModel->middleware_auth($token)) {
+            // Récupérer les données
+            $categories = $this->apiModel->get_categorie_by_slug($slug);
+
+            // Retourner les données en json
+            header('Content-Type: application/json');
+            echo json_encode($categories, JSON_UNESCAPED_UNICODE);
+        }
+    }
+
+    public function get_subcategories()
+    {
+        // On récupère le token dans le header
+        $headers = apache_request_headers();
+        $token = $headers['Authorization'];
+
+        if($this->apiModel->middleware_auth($token)) {
+            // Récupérer les données
+            $categories = $this->apiModel->get_subcategories();
 
             // Retourner les données en json
             header('Content-Type: application/json');
@@ -143,15 +207,15 @@ class ApiController
             $company = $this->apiModel->get_company();
 
             // Récupérer l'adresse de la société
-            foreach($company[0] as $key => $value) {
-                if($key === 'address') {
-                    $company_address = $value;
+            foreach($company as $object) {
+                if($object['parameter'] === 'address') {
+                    $company_address = $object['value'];
                 }
             };
 
             // Retourner les données en json
             header('Content-Type: application/json');
-            echo json_encode($company, JSON_UNESCAPED_UNICODE);
+            echo json_encode($company_address, JSON_UNESCAPED_UNICODE);
         }
     }
 }

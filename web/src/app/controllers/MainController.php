@@ -21,11 +21,44 @@ class MainController
         // Retourner les données
         return $menu;
     }
+
+    public function get_categories()
+    {
+        // Récupérer les données
+        $categories = $this->apiModel->get_categories();
+
+        // Retourner les données
+        return $categories;
+    }
+
+    public function get_subcategories()
+    {
+        // Récupérer les données
+        $subcategories = $this->apiModel->get_subcategories();
+
+        // Retourner les données
+        return $subcategories;
+    }
+
+    public function get_header_informations()
+    {
+        //Récupérer les données
+        $menu = $this->get_header();
+        $categories_in_menu = $this->get_categories();
+        $subcategories_in_menu = $this->get_subcategories();
+
+        // Retourner les données
+        return [
+            'menu' => $menu,
+            'categories_in_menu' => $categories_in_menu,
+            'subcategories_in_menu' => $subcategories_in_menu
+        ];
+    }
     
     public function render_home()
     {
-        // Récupérer les données du menu dans le header
-        $menu = $this->get_header();
+        // Récupérer les données du header
+        $header_informations = $this->get_header_informations();
 
         // Inclure la vue correspondante
         echo $this->pages->render(
@@ -33,15 +66,15 @@ class MainController
             [
                 'title' => 'Accueil',
                 'title_in_page' => 'Accueil',
-                'menu' => $menu
+                'header_informations' => $header_informations
             ]
         );
     }
 
     public function render_error()
     {
-        // Récupérer les données du menu dans le header
-        $menu = $this->get_header();
+        // Récupérer les données du header
+        $header_informations = $this->get_header_informations();
 
         // Inclure la vue correspondante
         echo $this->pages->render(
@@ -51,7 +84,7 @@ class MainController
                 'title_in_page' => '404',
                 'message' => 'Oops, une erreur s\'est produite.',
                 'submessage' => 'Désolé, nous ne parvenons pas à trouver votre page.',
-                'menu' => $menu
+                'header_informations' => $header_informations
             ]
         );
     }
@@ -132,8 +165,8 @@ class MainController
 
     public function render_products()
     {
-        // Récupérer les données du menu dans le header
-        $menu = $this->get_header();
+        // Récupérer les données du header
+        $header_informations = $this->get_header_informations();
 
         // Récupérer les données produits
         $products = $this->apiModel->get_products();
@@ -144,22 +177,45 @@ class MainController
             [
                 'title' => 'Nos produits',
                 'title_in_page' => 'Nos produits',
-                'menu' => $menu,
-                'products' => $products
+                'header_informations' => $header_informations,
+                'products' => $products,
+            ]
+        );
+    }
+
+    public function render_products_by_category($slug)
+    {
+        // Récupérer les données du header
+        $header_informations = $this->get_header_informations();
+
+        // Récupérer la catégorie courante
+        $current_category = $this->apiModel->get_categorie_by_slug($slug);
+
+        // Récupérer les données produits
+        $products = $this->apiModel->get_products_by_category($current_category['id']);
+
+        // Inclure la vue correspondante
+        echo $this->pages->render(
+            'product/product_category',
+            [
+                'title' => 'Nos produits',
+                'title_in_page' => 'Nos produits',
+                'header_informations' => $header_informations,
+                'products' => $products,
             ]
         );
     }
 
     public function render_product($slug)
     {
-        // Récupérer les données du menu dans le header
-        $menu = $this->get_header();
+        // Récupérer les données du header
+        $header_informations = $this->get_header_informations();
 
         // Récupérer les données produits
-        $product = $this->apiModel->get_product_by_slug($slug)[0];
+        $product = $this->apiModel->get_product_by_slug($slug);
 
         // Si le produit n'existe plus ou qu'il n'est pas activé, on redirige vers la page d'article introuvable
-        if($product['active'] == 0 || empty($product)) {
+        if(empty($product)) {
             echo $this->pages->render(
                 'product/error',
                 [
@@ -167,10 +223,14 @@ class MainController
                     'title_in_page' => 'Article introuvable',
                     'message' => 'Il semblerait que cet article n\'existe plus.',
                     'submessage' => 'Désolé, nous ne parvenons pas à trouver votre article.',
-                    'menu' => $menu
+                    'header_informations' => $header_informations
                 ]
             );
+            exit;
+        } else {
+            $product = $product[0];
         };
+
 
         // Traduire les données
         $translates = [
@@ -226,7 +286,7 @@ class MainController
             [
                 'title' => 'Nos produits',
                 'title_in_page' => 'Nos produits',
-                'menu' => $menu,
+                'header_informations' => $header_informations,
                 'product' => $product,
                 'translates' => $translates,
                 'company' => $company,

@@ -77,14 +77,35 @@ class ApiModel
         return $this->db->select('*', 'products', $conditions, $limit);
     }
 
+    public function get_products_by_category($cat_id)
+    {
+        return $this->db->select('*', 'products', ['cat_id' => $cat_id]);
+    }
+
     public function get_company()
     {
         return $this->db->select('*', 'company');
     }
 
+    public function get_categories()
+    {
+        return $this->db->select('*', 'categories');
+    }
+
     public function get_categorie_by_id($id)
     {
         return $this->db->simpleSelect('*', 'categories', ['id' => $id]);
+    }
+
+    public function get_categorie_by_slug($slug)
+    {
+        return $this->db->simpleSelect('*', 'categories', ['slug' => $slug]);
+    }
+
+    public function get_subcategories()
+    {
+        return $this->db->select('*', 'subcategories');
+    
     }
 
     public function get_location_by_id($id)

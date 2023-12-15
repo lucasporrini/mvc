@@ -91,8 +91,8 @@ class MainController
 
     public function render_login()
     {
-        // Récupérer les données du menu dans le header
-        $menu = $this->get_header();
+        // Récupérer les données du header
+        $header_informations = $this->get_header_informations();
 
         // Inclure la vue correspondante
         echo $this->pages->render(
@@ -100,7 +100,7 @@ class MainController
             [
                 'title' => 'Connexion',
                 'title_in_page' => 'Connexion',
-                'menu' => $menu
+                'header_informations' => $header_informations
             ]
         );
     }
@@ -113,8 +113,8 @@ class MainController
 
     public function render_register()
     {
-        // Récupérer les données du menu dans le header
-        $menu = $this->get_header();
+        // Récupérer les données du header
+        $header_informations = $this->get_header_informations();
 
         // Inclure la vue correspondante
         echo $this->pages->render(
@@ -122,7 +122,7 @@ class MainController
             [
                 'title' => 'Inscription',
                 'title_in_page' => 'Inscription',
-                'menu' => $menu
+                'header_informations' => $header_informations
             ]
         );
     }
@@ -145,8 +145,8 @@ class MainController
 
     public function render_user($user_id)
     {
-        // Récupérer les données du menu dans le header
-        $menu = $this->get_header();
+        // Récupérer les données du header
+        $header_informations = $this->get_header_informations();
 
         // Récupérer les données de l'utilisateur
         $user = $this->apiModel->get_user($user_id);
@@ -157,7 +157,7 @@ class MainController
             [
                 'title' => 'Page de profil',
                 'title_in_page' => 'Page de profil',
-                'menu' => $menu,
+                'header_informations' => $header_informations,
                 'user' => $user
             ]
         );
@@ -190,7 +190,7 @@ class MainController
 
         // Récupérer la catégorie courante
         $current_category = $this->apiModel->get_categorie_by_slug($slug);
-
+        
         // Récupérer les données produits
         $products = $this->apiModel->get_products_by_category($current_category['id']);
 

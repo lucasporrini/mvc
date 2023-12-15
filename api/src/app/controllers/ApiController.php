@@ -84,7 +84,7 @@ class ApiController
         }
     }
 
-    public function get_products_by_category($slug)
+    public function get_products_by_category($cat_id)
     {
         // On récupère le token dans le header
         $headers = apache_request_headers();
@@ -92,7 +92,7 @@ class ApiController
         
         if($this->apiModel->middleware_auth($token)) {
             // Récupérer les données
-            $products = $this->apiModel->get_products_by_category($slug);
+            $products = $this->apiModel->get_products_by_category($cat_id);
 
             // Retourner les données en json
             header('Content-Type: application/json');

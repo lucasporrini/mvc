@@ -3,7 +3,7 @@
         '../template/page_template',
         [
             'title' => $this->e($title),
-            'menu' => $menu
+            'header_informations' => $header_informations,
         ]
     );
 ?>

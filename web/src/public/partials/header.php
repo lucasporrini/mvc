@@ -40,7 +40,7 @@
                                 foreach($header_informations['categories_in_menu'] as $cat):
                                   if($cat['in_header'] == 1 && $cat['menu_id'] == $element['id']):
                               ?>
-                                    <a class="flex gap-x-4 text-gray-800 hover:text-gray-400" href="categorie/<?= $cat['slug'] ?>">
+                                    <a class="flex gap-x-4 text-gray-800 hover:text-gray-400" href="/categorie/<?= $cat['slug'] ?>">
                                       <svg class="flex-shrink-0 w-4 h-4" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></svg>
                                       <div class="grow">
                                         <p><?= $cat['name'] ?></p>

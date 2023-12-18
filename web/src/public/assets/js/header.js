@@ -71,4 +71,58 @@ window.addEventListener('DOMContentLoaded', () => {
             });
         });
     }
+
+    console.log(document.getElementById('headerCategories').querySelectorAll('a'));
+    console.log(document.getElementById('headerSubcategory').querySelectorAll('a'));
+    
+    document.getElementById('headerCategories').querySelectorAll('a').forEach(function(category) {
+        category.addEventListener('mouseenter', function(event) {
+            event.preventDefault();
+            // On récupère le "data-category" de l'élément survolé
+            var categorySlug = this.getAttribute('data-category');
+            console.log(categorySlug);
+
+            document.getElementById('headerSubcategory').querySelectorAll('a').forEach(function(subcategory) {
+                // On récupère le "data-subcategory" de l'élément survolé
+                var subcatSlug = subcategory.getAttribute('data-subcategory');
+                if(subcatSlug != categorySlug){
+                    subcategory.classList.add('hidden');
+                }
+                console.log(document.getElementById('headerSubcategory').parentElement.querySelectorAll('.space-y-4'));
+                document.getElementById('headerSubcategory').parentElement.querySelectorAll('.space-y-4').forEach(function(div){ div.classList.add('hidden')});
+                document.getElementById('headerSubcategory').classList.remove('hidden');
+
+                subcategory.addEventListener('mouseenter', function(event) {
+                    event.preventDefault();
+                    // On récupère le "data-category" de l'élément survolé
+                    console.log(subcatSlug);
+                });
+            });
+        });
+
+        category.addEventListener('mouseleave', function(event) {
+            event.preventDefault();
+            
+            document.getElementById('headerSubcategory').classList.add('hidden');
+
+            document.getElementById('headerSubcategory').querySelectorAll('a').forEach(function(subcategory) {
+                subcategory.classList.remove('hidden');
+            });
+
+            document.getElementById('headerSubcategory').parentElement.querySelectorAll('.space-y-4').forEach(function(div){ div.classList.remove('hidden')});
+            document.getElementById('headerSubcategory').classList.add('hidden');
+
+            currentHoveringCategory = false;
+        });
+
+        document.getElementById('headerSubcategory').querySelectorAll('a').forEach(function(subcategory) {
+            subcategory.addEventListener('mouseenter', function(event) {
+                event.preventDefault();
+                // On récupère le "data-category" de l'élément survolé
+                var subcatSlug = subcategory.getAttribute('data-subcategory');
+                console.log(subcatSlug);
+            });
+        });
+    });
+
 });

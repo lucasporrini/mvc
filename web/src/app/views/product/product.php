@@ -9,7 +9,7 @@
 ?>
 
 <main>
-    <?php // echo "<pre>";print_r($product['photos']);echo "</pre>"; ?>
+    <?php echo "<pre>";print_r($header_informations);echo "</pre>"; ?>
     <section class="py-10 font-poppins dark:bg-gray-800">
         <div class="max-w-6xl px-4 mx-auto">
             <div class="flex flex-wrap mb-24 -mx-4">

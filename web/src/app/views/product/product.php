@@ -21,7 +21,7 @@
                                     <path fill-rule="evenodd" d="M11.354 1.646a.5.5 0 0 1 0 .708L5.707 8l5.647 5.646a.5.5 0 0 1-.708.708l-6-6a.5.5 0 0 1 0-.708l6-6a.5.5 0 0 1 .708 0z"></path>
                                 </svg>
                             </a> -->
-                            <img id="mainImage" class="object-contain w-full lg:h-full rounded-sm" src="<?= !empty($product['photos'][0]) ? BASE_URL . "public/assets/uploads/product/" . $product['id'] . "/" . $product['photos'][0]['photo'] : "" ?>" alt="">
+                            <img id="mainImage" class="object-contain w-full lg:h-full rounded-sm transition duration-300 ease-in-out" src="<?= !empty($product['photos'][0]) ? BASE_URL . "public/assets/uploads/product/" . $product['id'] . "/" . $product['photos'][0]['photo'] : "" ?>" alt="">
                             <!-- <a class="absolute right-0 transform lg:mr-2 top-1/2 translate-1/2" href="#">
                                 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="w-7 h-7 text-gray-500 bi bi-chevron-right bg-white rounded-sm p-1 hover:text-green-400" viewBox="0 0 16 16">
                                     <path fill-rule="evenodd" d="M4.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L10.293 8 4.646 2.354a.5.5 0 0 1 0-.708z"></path>

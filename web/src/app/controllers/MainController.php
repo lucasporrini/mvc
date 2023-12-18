@@ -229,6 +229,7 @@ class MainController
             exit;
         } else {
             $product = $product[0];
+            $product['photos'] = json_decode($product['photos'], true);
         };
 
 

@@ -9,46 +9,33 @@
 ?>
 
 <main>
-    <?php //echo "<pre>";print_r($location);echo "</pre>"; ?>
+    <?php // echo "<pre>";print_r($product['photos']);echo "</pre>"; ?>
     <section class="py-10 font-poppins dark:bg-gray-800">
         <div class="max-w-6xl px-4 mx-auto">
             <div class="flex flex-wrap mb-24 -mx-4">
                 <div class="w-full px-4 mb-8 md:w-1/2 md:mb-0">
                     <div class="sticky top-0 overflow-hidden ">
                         <div class="relative mb-6 lg:mb-10 lg:h-96">
-                            <a class="absolute left-0 transform lg:ml-2 top-1/2 translate-1/2" href="#">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="w-5 h-5 text-red-500 bi bi-chevron-left dark:text-red-200" viewBox="0 0 16 16">
+                            <!-- <a class="absolute left-0 transform lg:ml-2 top-1/2 translate-1/2" href="#">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="w-7 h-7 text-gray-500 bi bi-chevron-left bg-white rounded-sm p-1 hover:text-green-400" viewBox="0 0 16 16">
                                     <path fill-rule="evenodd" d="M11.354 1.646a.5.5 0 0 1 0 .708L5.707 8l5.647 5.646a.5.5 0 0 1-.708.708l-6-6a.5.5 0 0 1 0-.708l6-6a.5.5 0 0 1 .708 0z"></path>
                                 </svg>
-                            </a>
-                            <img class="object-contain w-full lg:h-full" src="https://i.postimg.cc/0jwyVgqz/Microprocessor1-removebg-preview.png" alt="">
-                            <a class="absolute right-0 transform lg:mr-2 top-1/2 translate-1/2" href="#">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="w-5 h-5 text-red-500 bi bi-chevron-right dark:text-red-200" viewBox="0 0 16 16">
+                            </a> -->
+                            <img id="mainImage" class="object-contain w-full lg:h-full rounded-sm" src="<?= !empty($product['photos'][0]) ? BASE_URL . "public/assets/uploads/product/" . $product['id'] . "/" . $product['photos'][0]['photo'] : "" ?>" alt="">
+                            <!-- <a class="absolute right-0 transform lg:mr-2 top-1/2 translate-1/2" href="#">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="w-7 h-7 text-gray-500 bi bi-chevron-right bg-white rounded-sm p-1 hover:text-green-400" viewBox="0 0 16 16">
                                     <path fill-rule="evenodd" d="M4.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L10.293 8 4.646 2.354a.5.5 0 0 1 0-.708z"></path>
                                 </svg>
-                            </a>
+                            </a> -->
                         </div>
                         <div class="flex-wrap hidden -mx-2 md:flex">
-                            <div class="w-1/2 p-2 sm:w-1/4">
-                                <a class="block border border-gray-200 hover:border-red-400 dark:border-gray-700 dark:hover:border-red-300" href="#">
-                                    <img class="object-contain w-full lg:h-28" src="https://i.postimg.cc/Z5KhRkD6/download-1-removebg-preview.png" alt="">
-                                </a>
-                            </div>
-                            <div class="w-1/2 p-2 sm:w-1/4">
-                                <a class="block border border-gray-200 hover:border-red-400 dark:border-gray-700 dark:hover:border-red-300" href="#">
-                                    <img class="object-contain w-full lg:h-28" src="https://i.postimg.cc/8kJBrw03/download-removebg-preview.png" alt="">
-                                </a>
-                            </div>
-                            <div class="w-1/2 p-2 sm:w-1/4">
-                                <a class="block border border-gray-200 hover:border-red-400 dark:border-gray-700 dark:hover:border-red-300" href="#">
-                                    <img class="object-contain w-full lg:h-28" src="https://i.postimg.cc/0jwyVgqz/Microprocessor1-removebg-preview.png" alt="">
-                                </a>
-                            </div>
-                            <div class="w-1/2 p-2 sm:w-1/4">
-                                <a class="block border border-gray-200 hover:border-red-400 dark:border-gray-700 dark:hover:border-red-300" href="#">
-                                    <img class="object-contain w-full lg:h-28" src="https://i.postimg.cc/0N4Kk1PN/black-microprocessors-removebg-preview.png" alt="">
-                                </a>
-                            </div>
+                            <?php foreach ($product['photos'] as $photo) : ?>
+                                <div class="w-1/2 p-2 sm:w-1/4">
+                                    <a class="block rounded-sm border hover:border-gray-400 <?= $photo['photo'] == $product['photos'][0]['photo'] ? "border-green-400" : "border-gray-200" ?>" href="#" data-image-src="<?= BASE_URL . "public/assets/uploads/product/" . $product['id'] . "/" . $photo['photo'] ?>">
+                                        <img class="object-contain w-full lg:h-28" src="<?= BASE_URL . "public/assets/uploads/product/" . $product['id'] . "/" . $photo["photo"] ?>" alt="">
+                                    </a>
+                                </div>
+                            <?php endforeach; ?>
                         </div>
                     </div>
                 </div>

@@ -171,6 +171,15 @@ class MainController
         // Récupérer les données produits
         $products = $this->apiModel->get_products();
 
+        // Transformer la chaîne de caractere en tableau
+        foreach($products as $key => $product) {
+            if(isset($product['photos'])) {
+                $products[$key]['photos'] = json_decode($product['photos'], true);
+            } else {
+                $products[$key]['photos'] = [];
+            }
+        }
+
         // Inclure la vue correspondante
         echo $this->pages->render(
             'product/products',

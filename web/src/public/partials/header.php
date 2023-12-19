@@ -78,7 +78,7 @@
                             <div class="space-y-4">
                               <span class="mb-2 text-xs font-semibold uppercase text-gray-500">Support</span>
 
-                              <a class="flex gap-x-4 text-gray-800 hover:text-gray-400 " href="#">
+                              <a class="flex gap-x-4 text-gray-800 hover:text-gray-400 " href="/products">
                                 <svg class="flex-shrink-0 w-4 h-4" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/><path d="M12 17h.01"/></svg>
                                 <div class="grow">
                                   <p>Tous les produits</p>

@@ -16,7 +16,7 @@
             ?>
                 <!-- ====== Template for product card start ====== -->
                 <a href="/product/<?= $product['slug'] ?>" class="p-5 py-10 bg-blue-100 text-center rounded-l transform duration-500 hover:-translate-y-2 cursor-pointer">
-                    <img src="https://www.dropbox.com/s/mlor33hzk73rh0c/x14423.png?dl=1" alt="">
+                    <img class="object-contain rounded-sm" src="<?= isset($product['photos'][0]['photo']) && !empty($product['photos'][0]['photo']) ? BASE_URL . "public/assets/uploads/product/" . $product['id'] . "/" . $product['photos'][0]['photo'] : BASE_URL . "public/assets/uploads/product/default/default.png" ?>" alt="">
                     <div class="space-x-1 flex justify-center mt-10">
                         <?php
                             for($i = 0; $i < $product['trust']; $i++) {

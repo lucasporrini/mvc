@@ -9,7 +9,7 @@
 ?>
 
 <main>
-    <?php echo "<pre>";print_r($header_informations);echo "</pre>"; ?>
+    <?php //echo "<pre>";print_r($header_informations);echo "</pre>"; ?>
     <section class="py-10 font-poppins dark:bg-gray-800">
         <div class="max-w-6xl px-4 mx-auto">
             <div class="flex flex-wrap mb-24 -mx-4">
@@ -105,7 +105,7 @@
                                         <div class="flex flex-wrap gap-x-10 gap-y-4">
                                             <?php
                                                 foreach ($product as $key => $value) :
-                                                    if($key != "title" && $key != "id" && $key != "caption" && $key != "price_new" && $key != "price_unite" && $key != "unite" && $key != "trust" && $key != "created_at" && $key != "slug" && $key != "photos" && $key != "category_id" && $key != "storage_location" && $key != "location_id" && $key != "available" && $key != "availability_date" && $key != "active" && $key != "booked" && $key != "description" && $key != "quantity" && $key != "brand" && $key != "reference" && $key != "material" && $key != "assembly" && $key != "code_article" && $key != "state" && $key != "sold_at" && $key != "sold") :
+                                                    if($key != "title" && $key != "id" && $key != "caption" && $key != "carbon_footprint" && $key != "price_new" && $key != "price_unite" && $key != "unite" && $key != "trust" && $key != "created_at" && $key != "slug" && $key != "photos" && $key != "category_id" && $key != "storage_location" && $key != "location_id" && $key != "available" && $key != "availability_date" && $key != "active" && $key != "booked" && $key != "description" && $key != "quantity" && $key != "brand" && $key != "reference" && $key != "material" && $key != "assembly" && $key != "code_article" && $key != "state" && $key != "sold_at" && $key != "sold") :
                                             ?>
                                                         <div class="w-full mb-4 md:w-2/5">
                                                             <div class="flex ">
@@ -117,7 +117,16 @@
                                                                         <?= isset($translates[$key]) ? ucfirst($translates[$key]) : ucfirst($key) ?>
                                                                     </p>
                                                                     <h2 class="text-base font-semibold text-gray-700">
-                                                                        <?= $value ?> <?= $key == "packaging" ? "" : "m" ?>
+                                                                        <?php
+                                                                            echo $value . " ";
+                                                                            if ($key == "weight") {
+                                                                                echo "kg";
+                                                                            } else if ($key == "packaging") {
+                                                                                continue;
+                                                                            } else {
+                                                                                echo "m";
+                                                                            }
+                                                                        ?>
                                                                     </h2>
                                                                 </div>
                                                             </div>
@@ -131,7 +140,7 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="py-6 mb-6 border-t border-b border-gray-200">                                   
+                            <div class="p-3 mb-6 lg:p-6 border-t border-b border-gray-200">                                   
                                     <?php
                                         if($product['quantity'] < 5 && $product['quantity'] > 1 && $product['booked'] == 0):
                                     ?>
@@ -158,19 +167,13 @@
                                     <p class="mt-2 text-sm text-gray-600 font-bold">
                                         <span class="text-gray-600 font-normal">L'article est disponible <?= $product['storage_location'] == "chantier" ? "sur </span>" . $product['storage_location'] : "à notre </span>" . $product['storage_location'] ?>
                                     </p>
-                                    <?php
-                                        if($product['storage_location'] == "chantier"):
-                                    ?>
+                                    <?php if($product['storage_location'] == "chantier"): ?>
                                         <p class="mt-2 text-sm text-gray-600">L'article est pour le moment sur un chantier à <span class="font-bold"><?= $location['place'] ?></span>. Quand il sera disponible au retrait, plus ample informations vous serons communiquées.</p>
-                                    <?php
-                                        elseif($product['storage_location'] == "dépôt"):
-                                    ?>
+                                    <?php elseif($product['storage_location'] == "dépôt"): ?>
                                         <p class="mt-2 text-sm text-gray-600"><?= $location ?></p>
-                                    <?php
-                                        endif;
-                                    ?>
+                                    <?php endif; ?>
                                 </div>
-                                <div class="flex gap-4 mb-6">
+                                <div class="p-3 lg:p-6 flex gap-4 mb-6">
                                     <a href="#" class="w-full px-4 py-3 text-center text-gray-100 bg-blue-400 border border-transparent hover:bg-blue-600 rounded-xl <?= $product['quantity'] == 0 || $product['booked'] == 1 || $product['sold'] == 1 ? 'bg-gray-500 text-white hover:bg-gray-600 cursor-not-allowed" disabled' : "" ?>">
                                         Reserver maintenant
                                     </a>

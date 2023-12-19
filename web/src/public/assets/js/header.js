@@ -124,10 +124,13 @@ window.addEventListener('DOMContentLoaded', () => {
                 // On récupère la chaine de charactère et la transforme en tableau
                 var subcatArray = subcatSlug.split(",");
 
-                console.log(link);
                 link[0].href = "/subcategory/" + subcatArray[1];
 
-                div[0].querySelector('img').src = subcatArray[2];
+                if (subcatArray[2] == "") {
+                    div[0].querySelector('img').src = "http://localhost:8080//public/assets/uploads/subcategory/default/default.png";
+                } else {
+                    div[0].querySelector('img').src = subcatArray[2];
+                }
                 div[1].querySelector('p').textContent = subcatArray[0];
             });
 

@@ -13,15 +13,15 @@
     <div class="flex justify-center p-10">
         <div class="diff aspect-[16/9] w-[50%] rounded">
             <div class="diff-item-1">
-                <img alt="daisy" src="https://img.freepik.com/photos-gratuite/personne-appreciant-coucher-du-soleil-chaud-nostalgique_52683-100695.jpg?w=1060&t=st=1701251310~exp=1701251910~hmac=466c9575e4e251cd231bdafd5ed3963b2f0bf8de88b0d1ef9e1ec82633ca42fd" />
-                <div class="text-primary-content text-9xl font-black grid place-content-center">
-                    Avant
+                <img alt="daisy" src="<?= BASE_URL ?>/public/assets/uploads/home/new.png" />
+                <div class="text-green-400 text-9xl font-black grid place-content-center">
+                    Après
                 </div>
             </div>
             <div class="diff-item-2">
-                <img alt="daisy" src="https://img.freepik.com/photos-gratuite/portrait-analogique-belle-femme-posant-artistiquement-interieur_23-2149630182.jpg?w=1060&t=st=1701251312~exp=1701251912~hmac=714aed8f831a53f91894e0094f57c686e780cdc29a31795026f4dbb91a9b32d8" />
-                <div class="text-9xl font-black grid place-content-center">
-                    Après
+                <img alt="daisy" src="<?= BASE_URL ?>/public/assets/uploads/home/old.png" />
+                <div class="text-primary-content text-9xl font-black grid place-content-center">
+                    Avant
                 </div>
             </div>
             <div class="diff-resizer">

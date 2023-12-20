@@ -21,7 +21,7 @@
                                     <path fill-rule="evenodd" d="M11.354 1.646a.5.5 0 0 1 0 .708L5.707 8l5.647 5.646a.5.5 0 0 1-.708.708l-6-6a.5.5 0 0 1 0-.708l6-6a.5.5 0 0 1 .708 0z"></path>
                                 </svg>
                             </a> -->
-                            <img id="mainImage" class="object-contain w-full lg:h-full rounded-sm transition duration-300 ease-in-out" src="<?= !empty($product['photos'][0]) ? BASE_URL . "public/assets/uploads/product/" . $product['id'] . "/" . $product['photos'][0]['photo'] : "" ?>" alt="">
+                            <img id="mainImage" class="object-contain w-full lg:h-full rounded-sm transition duration-300 ease-in-out" src="<?= !empty($product['photos'][0]) ? BASE_URL . "public/assets/uploads/product/" . $product['id'] . "/" . $product['photos'][0]['photo'] : BASE_URL . "public/assets/uploads/product/default/default.png" ?>" alt="">
                             <!-- <a class="absolute right-0 transform lg:mr-2 top-1/2 translate-1/2" href="#">
                                 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="w-7 h-7 text-gray-500 bi bi-chevron-right bg-white rounded-sm p-1 hover:text-green-400" viewBox="0 0 16 16">
                                     <path fill-rule="evenodd" d="M4.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L10.293 8 4.646 2.354a.5.5 0 0 1 0-.708z"></path>
@@ -136,29 +136,17 @@
                                 </div>
                             </div>
                             <div class="p-3 mb-6 lg:p-6 border-t border-b border-gray-200">                                   
-                                    <?php
-                                        if($product['quantity'] < 5 && $product['quantity'] > 1 && $product['booked'] == 0):
-                                    ?>
+                                    <?php if($product['quantity'] < 5 && $product['quantity'] > 1 && $product['booked'] == 0): ?>
                                         <span class="mb-2 text-red-500 font-bold">Il n'en reste que <?= $product['quantity'] ?> !</span>
-                                    <?php
-                                        elseif($product['quantity'] == 1):
-                                    ?>
+                                    <?php elseif($product['quantity'] == 1): ?>
                                         <span class="mb-2 text-red-500 font-bold">Dernier article en stock !</span>
-                                    <?php
-                                        elseif($product['quantity'] > 5):
-                                    ?>
+                                    <?php elseif($product['quantity'] > 5): ?>
                                         <span class="font-bold text-green-500">En stock</span>
-                                    <?php
-                                        elseif($product['quantity'] == 0):
-                                    ?>
+                                    <?php elseif($product['quantity'] == 0): ?>
                                         <span class="font-bold text-red-500">Rupture de stock</span>
-                                    <?php
-                                        elseif($product['booked'] == 1):
-                                    ?>
+                                    <?php elseif($product['booked'] == 1): ?>
                                         <span class="font-bold text-yellow-500">Réservé</span>
-                                    <?php
-                                        endif;
-                                    ?>
+                                    <?php endif; ?>
                                     <p class="mt-2 text-sm text-gray-600 font-bold">
                                         <span class="text-gray-600 font-normal">L'article est disponible <?= $product['storage_location'] == "chantier" ? "sur </span>" . $product['storage_location'] : "à notre </span>" . $product['storage_location'] ?>
                                     </p>

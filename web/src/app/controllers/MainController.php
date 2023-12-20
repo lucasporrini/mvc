@@ -252,6 +252,7 @@ class MainController
             	$product = $product[0];
                 $product['photos'] = json_decode($product['photos'], true);
             } else {
+                $product = $product[0];
                 $product['photos'] = [];
             }
         };

@@ -40,21 +40,32 @@ class MainController
         return $subcategories;
     }
 
+    public function get_company()
+    {
+        // Récupérer les données
+        $company = $this->apiModel->get_company();
+
+        // Retourner les données
+        return $company;
+    }
+
     public function get_header_informations()
     {
         //Récupérer les données
         $menu = $this->get_header();
         $categories_in_menu = $this->get_categories();
         $subcategories_in_menu = $this->get_subcategories();
+        $company = $this->get_company();
 
         // Retourner les données
         return [
             'menu' => $menu,
             'categories_in_menu' => $categories_in_menu,
-            'subcategories_in_menu' => $subcategories_in_menu
+            'subcategories_in_menu' => $subcategories_in_menu,
+            'company' => $company
         ];
     }
-    
+
     public function render_home()
     {
         // Récupérer les données du header
@@ -237,8 +248,12 @@ class MainController
             );
             exit;
         } else {
-            $product = $product[0];
-            $product['photos'] = json_decode($product['photos'], true);
+            if (isset($product[0]['photos'])) {
+            	$product = $product[0];
+                $product['photos'] = json_decode($product['photos'], true);
+            } else {
+                $product['photos'] = [];
+            }
         };
 
 
@@ -287,9 +302,6 @@ class MainController
             $location = $this->apiModel->get_company_address();
         }
 
-        // Récupérer les données entreprise
-        $company = $this->apiModel->get_company();
-
         // Inclure la vue correspondante
         echo $this->pages->render(
             'product/product',
@@ -299,7 +311,6 @@ class MainController
                 'header_informations' => $header_informations,
                 'product' => $product,
                 'translates' => $translates,
-                'company' => $company,
                 'categorie' => $categorie,
                 'location' => $location
             ]

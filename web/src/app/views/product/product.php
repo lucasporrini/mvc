@@ -60,9 +60,7 @@
                             </h2>
                             <div class="flex flex-wrap items-center mb-6">
                                 <ul class="flex mb-4 mr-2 lg:mb-0">
-                                    <?php
-                                        for($i = 0; $i < $product['trust']; $i++) {
-                                    ?>
+                                    <?php for($i = 0; $i < $product['trust']; $i++) { ?>
                                         <li>
                                             <a href="#">
                                                 <svg class="w-4 h-4 mx-px fill-current text-orange-600" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 14 14">
@@ -77,15 +75,12 @@
                                     ?>
                                         <li>
                                             <a href="#">
-                                                <svg class="w-4 h-4 mx-px fill-current text-gray-300" xmlns="http://www.w3.org/2000/svg"
-                                                    viewBox="0 0 14 14">
+                                                <svg class="w-4 h-4 mx-px fill-current text-gray-300" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 14 14">
                                                     <path d="M6.43 12l-2.36 1.64a1 1 0 0 1-1.53-1.11l.83-2.75a1 1 0 0 0-.35-1.09L.73 6.96a1 1 0 0 1 .59-1.8l2.87-.06a1 1 0 0 0 .92-.67l.95-2.71a1 1 0 0 1 1.88 0l.95 2.71c.13.4.5.66.92.67l2.87.06a1 1 0 0 1 .59 1.8l-2.3 1.73a1 1 0 0 0-.34 1.09l.83 2.75a1 1 0 0 1-1.53 1.1L7.57 12a1 1 0 0 0-1.14 0z"></path>
                                                 </svg>
                                             </a>
                                         </li>
-                                    <?php
-                                        }
-                                    ?>
+                                    <?php } ?>
                                 </ul>
                                 <a class="mb-4 text-xs underline hover:text-gray-500 lg:mb-0 tooltip" href="#" data-tip="L'indice de confiance est un chiffre allant de 1 à 5 qui permet d'estimer  la fiabilité d'un produit. Il est à titre indictif.">
                                     Qu'est ce que l'indice de confiance ?
@@ -93,7 +88,7 @@
                             </div>
                             <p class="inline-block text-2xl font-semibold text-gray-700 ">
                                 <span><?= $product['price_unite'] ?>€ (par <?= $product['unite'] ?>)</span>
-                                <span class="ml-3 text-base font-normal text-gray-500 line-through"><?= $product['price_new'] ?>€</span>
+                                <span class="ml-3 text-xl font-normal text-gray-500 line-through"><?= $product['price_new'] ?>€</span>
                             </p>
                         </div>
                         <div class="mb-6">

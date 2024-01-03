@@ -51,11 +51,11 @@
                     <?php
                         if($product['quantity'] > 0) {
                     ?>
-                        <button class="p-2 px-6 bg-blue-500 text-white rounded-md hover:bg-blue-600">Réserver</button>
+                        <button class="p-2 px-6 bg-blue-500 text-white rounded-md hover:bg-blue-600">Réserver 🚀</button>
                     <?php
                         } else {
                     ?>
-                        <button class="p-2 px-6 bg-gray-500 text-white rounded-md hover:bg-gray-600 cursor-not-allowed" disabled>Réserver</button>
+                        <button class="p-2 px-6 bg-gray-500 text-white rounded-md hover:bg-gray-600 cursor-not-allowed" disabled>Réserver 🚀</button>
                     <?php
                         }
                     ?>

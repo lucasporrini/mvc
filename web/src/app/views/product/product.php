@@ -158,7 +158,7 @@
                                 </div>
                                 <div class="p-3 lg:p-6 flex gap-4 mb-6">
                                     <a href="#" class="w-full px-4 py-3 text-center text-gray-100 bg-blue-400 border border-transparent hover:bg-blue-600 rounded-xl <?= $product['quantity'] == 0 || $product['booked'] == 1 || $product['sold'] == 1 ? 'bg-gray-500 text-white hover:bg-gray-600 cursor-not-allowed" disabled' : "" ?>">
-                                        Reserver maintenant
+                                        J'appelle pour réserver 🚀
                                     </a>
                                 </div>
                             </div>

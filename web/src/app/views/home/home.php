@@ -129,9 +129,9 @@
                         </svg>
                         Design
                     </a> -->
-                    <h2 class="text-gray-800 text-2xl md:text-3xl font-bold mb-2">Start with Flowbite Design System</h2>
-                    <p class="text-lg font-normal text-gray-500 dark:text-gray-400 mb-4">Static websites are now used to bootstrap lots of websites and are becoming the basis for a variety of tools that even influence both web designers and developers.</p>
-                    <a href="#" class="text-blue-600 dark:text-blue-500 hover:underline font-medium text-lg inline-flex items-center">Read more
+                    <h2 class="text-gray-800 text-2xl md:text-3xl font-bold mb-2">Le réemploi plus précisemment ?</h2>
+                    <p class="text-lg font-normal text-gray-500 dark:text-gray-400 mb-4">Tu aimerais savoir ce qu'est le réemploi ou tu souhaites tout simplement en apprendre plus sur le sujet ?</p>
+                    <a href="#" class="text-blue-600 dark:text-blue-500 hover:underline font-medium text-lg inline-flex items-center">En savoir plus sur le réemploi
                         <svg class="w-3.5 h-3.5 ms-2 rtl:rotate-180" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 10">
                         <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M1 5h12m0 0L9 1m4 4L9 9"/>
                     </svg>
@@ -144,9 +144,9 @@
                         </svg>
                         Code
                     </a> -->
-                    <h2 class="text-gray-800 text-2xl md:text-3xl font-bold mb-2">Best react libraries around the web</h2>
-                    <p class="text-lg font-normal text-gray-500 dark:text-gray-400 mb-4">Static websites are now used to bootstrap lots of websites and are becoming the basis for a variety of tools that even influence both web designers and developers.</p>
-                    <a href="#" class="text-blue-600 dark:text-blue-500 hover:underline font-medium text-lg inline-flex items-center">Read more
+                    <h2 class="text-gray-800 text-2xl md:text-3xl font-bold mb-2">Nos processus</h2>
+                    <p class="text-lg font-normal text-gray-500 dark:text-gray-400 mb-4">Reborn c'est avant tout une expertise dans le réemploi de produits provenant du BTP, nous avons justement un article qui vous expliquera tout</p>
+                    <a href="#" class="text-blue-600 dark:text-blue-500 hover:underline font-medium text-lg inline-flex items-center">Lire l'article
                         <svg class="w-3.5 h-3.5 ms-2 rtl:rotate-180" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 10">
                             <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M1 5h12m0 0L9 1m4 4L9 9"/>
                         </svg>
@@ -244,58 +244,5 @@
     </section>
     <!-- End Features -->
 
-    <!-- Icon Blocks -->
-    <section class="max-w-[85rem] px-4 py-10 sm:px-6 lg:px-8 lg:py-14 mx-auto">
-        <div class="grid sm:grid-cols-2 lg:grid-cols-4 items-center gap-12">
-            <!-- Icon Block -->
-            <div class="text-center">
-                <div class="flex justify-center items-center w-12 h-12 bg-gray-50 border border-gray-200 rounded-full mx-auto dark:bg-gray-800 dark:border-gray-700">
-                    <svg class="flex-shrink-0 w-5 h-5 text-gray-600 dark:text-gray-400" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="10" height="14" x="3" y="8" rx="2"/><path d="M5 4a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v16a2 2 0 0 1-2 2h-2.4"/><path d="M8 18h.01"/></svg>
-                </div>
-                <div class="mt-3">
-                    <h3 class="text-lg font-semibold text-gray-800 dark:text-white">Responsive</h3>
-                    <p class="mt-1 text-gray-600 dark:text-gray-400">Responsive, and mobile-first project on the web</p>
-                </div>
-            </div>
-            <!-- End Icon Block -->
-
-            <!-- Icon Block -->
-            <div class="text-center">
-                <div class="flex justify-center items-center w-12 h-12 bg-gray-50 border border-gray-200 rounded-full mx-auto dark:bg-gray-800 dark:border-gray-700">
-                    <svg class="flex-shrink-0 w-5 h-5 text-gray-600 dark:text-gray-400" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 7h-9"/><path d="M14 17H5"/><circle cx="17" cy="17" r="3"/><circle cx="7" cy="7" r="3"/></svg>
-                </div>
-                <div class="mt-3">
-                    <h3 class="text-lg font-semibold text-gray-800 dark:text-white">Customizable</h3>
-                    <p class="mt-1 text-gray-600 dark:text-gray-400">Components are easily customized and extendable</p>
-                </div>
-            </div>
-            <!-- End Icon Block -->
-
-            <!-- Icon Block -->
-            <div class="text-center">
-                <div class="flex justify-center items-center w-12 h-12 bg-gray-50 border border-gray-200 rounded-full mx-auto dark:bg-gray-800 dark:border-gray-700">
-                    <svg class="flex-shrink-0 w-5 h-5 text-gray-600 dark:text-gray-400" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></svg>
-                </div>
-                <div class="mt-3">
-                    <h3 class="text-lg font-semibold text-gray-800 dark:text-white">Documentation</h3>
-                    <p class="mt-1 text-gray-600 dark:text-gray-400">Every component and plugin is well documented</p>
-                </div>
-            </div>
-            <!-- End Icon Block -->
-
-            <!-- Icon Block -->
-            <div class="text-center">
-                <div class="flex justify-center items-center w-12 h-12 bg-gray-50 border border-gray-200 rounded-full mx-auto dark:bg-gray-800 dark:border-gray-700">
-                    <svg class="flex-shrink-0 w-5 h-5 text-gray-600 dark:text-gray-400" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 9a2 2 0 0 1-2 2H6l-4 4V4c0-1.1.9-2 2-2h8a2 2 0 0 1 2 2v5Z"/><path d="M18 9h2a2 2 0 0 1 2 2v11l-4-4h-6a2 2 0 0 1-2-2v-1"/></svg>
-                </div>
-                <div class="mt-3">
-                    <h3 class="text-lg font-semibold text-gray-800 dark:text-white">24/7 Support</h3>
-                    <p class="mt-1 text-gray-600 dark:text-gray-400">Contact us 24 hours a day, 7 days a week</p>
-                </div>
-            </div>
-            <!-- End Icon Block -->
-        </div>
-    </section>
-    <!-- End Icon Blocks -->
 </main>
 

@@ -34,4 +34,16 @@ document.addEventListener("DOMContentLoaded", function() {
     }, { threshold: 0.5 });
 
     observer.observe(document.getElementById("statsSection"));
+
+
+    const tabs = document.getElementById("tabsSection").querySelectorAll("button");
+
+    tabs.forEach(tab => {
+        tab.addEventListener("click", () => {
+            tabs.forEach(otherTab => {
+                otherTab.classList.remove("active");
+            });
+            tab.classList.add("active");
+        });
+    })
 });

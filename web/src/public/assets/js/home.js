@@ -37,9 +37,21 @@ document.addEventListener("DOMContentLoaded", function() {
 
 
     const tabs = document.getElementById("tabsSection").querySelectorAll("button");
+    const tabsImage = document.getElementById("tabsSection").querySelectorAll("img");
+    // On récupère le parent de chacune des images
+    const tabsImageParent = [];
+    tabsImage.forEach(image => {
+        tabsImageParent.push(image.parentElement);
+    });
 
-    tabs.forEach(tab => {
+    tabs.forEach((tab, index) => {
         tab.addEventListener("click", () => {
+            tabsImageParent[index].classList.remove("hidden");
+            tabsImageParent.forEach(otherTabImageParent => {
+                if (otherTabImageParent !== tabsImageParent[index]) {
+                    otherTabImageParent.classList.add("hidden");
+                }
+            });
             tabs.forEach(otherTab => {
                 otherTab.classList.remove("active");
             });

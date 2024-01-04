@@ -23,7 +23,7 @@
                         </h3>
                         <?= $product['quantity'] > 0 ? '<div class="mb-2 text-green-500 font-bold dark:text-green-400">En stock</div>' : '<div class="mb-2 text-red-500 font-bold dark:text-red-400">Rupture de stock</div>' ?>
                         <div class="flex justify-between mb-2">
-                            <p class="mb-2 text-lg text-gray-600 dark:text-gray-400 ">
+                            <p class="mb-2 text-lg text-gray-600 dark:text-gray-400">
                                 <span><?= $product['price_unite'] ?> € (par <?= $product['unite'] ?>) <span class="p-0 m-0 line-through"><?= $product['price_new'] ?>€</span></span>
                             </p>
                             <ul class="flex ">
@@ -49,6 +49,9 @@
                                     </li>
                                 <?php endfor; ?>
                             </ul>
+                        </div>
+                        <div class="flex mb-2">
+                            <p class="mb-2 text-sm text-gray-400 dark:text-gray-400"><?= isset($product['carbon_footprint']) && !empty($product['carbon_footprint']) ? "🌱 " . $product['carbon_footprint'] . "kg de carbone rejeté évité" : "Aucun indice carbone pour le moment" ?></p>
                         </div>
                         <div class="flex justify-center items-center">
                             <button class=<?= $product['quantity'] > 0 ? '"p-2 px-6 bg-blue-500 text-white rounded-md hover:bg-blue-600 bg-blue-500 hover:bg-blue-600"' : '"p-2 px-6 bg-blue-500 text-white rounded-md hover:bg-blue-600 bg-gray-500 hover:bg-gray-600 cursor-not-allowed" disabled' ?>>

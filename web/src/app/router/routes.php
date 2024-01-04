@@ -18,6 +18,8 @@ $router->get('/products', [$MainController, 'render_products']);
 $router->get('/product/:slug', [$MainController, 'render_product'])->with('slug', '[a-z\-0-9]+');
 $router->get('/categorie/:name', [$MainController, 'render_products_by_category'])->with('name', '[a-z\-0-9]+');
 
+$router->get('/a-propos', [$MainController, 'render_about']);
+
 $router->get('/user/:id', [$MainController, 'render_user'])->with('id', '[0-9]+');
 
 // Politique de confidentialité

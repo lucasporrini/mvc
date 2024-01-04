@@ -91,10 +91,26 @@ class MainController
         echo $this->pages->render(
             'error/error',
             [
-                'title' => 'Page introuvable',
+                'title' => 'Page introuvable | Reborn',
                 'title_in_page' => '404',
                 'message' => 'Oops, une erreur s\'est produite.',
                 'submessage' => 'Désolé, nous ne parvenons pas à trouver votre page.',
+                'header_informations' => $header_informations
+            ]
+        );
+    }
+
+    public function render_about()
+    {
+        // Récupérer les données du header
+        $header_informations = $this->get_header_informations();
+
+        // Inclure la vue correspondante
+        echo $this->pages->render(
+            'about/about',
+            [
+                'title' => 'A propos | Reborn',
+                'title_in_page' => 'A propos de Reborn',
                 'header_informations' => $header_informations
             ]
         );

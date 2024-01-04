@@ -9,8 +9,8 @@
 ?>
 
 <main>
-    <?php //echo "<pre>";print_r($header_informations);echo "</pre>"; ?>
-    <section class="py-10 font-poppins dark:bg-gray-800">
+    <?php //echo "<pre>";print_r($product);echo "</pre>"; ?>
+    <section class="py-10 dark:bg-gray-800">
         <div class="max-w-6xl px-4 mx-auto">
             <div class="flex flex-wrap mb-24 -mx-4">
                 <div class="w-full px-4 mb-8 md:w-1/2 md:mb-0">
@@ -41,7 +41,7 @@
                 </div>
                 <div class="w-full px-4 md:w-1/2">
                     <div class="">
-                        <div class="mb-6 ">
+                        <div class="mb-10">
                             <h2 class="flex items-center max-w-xl mt-6 mb-3 text-xl font-semibold leading-loose tracking-wide text-gray-700 md:text-2xl dark:text-gray-300">
                                 <?= $product['title'] ?>
                                 <?php
@@ -93,8 +93,7 @@
                         </div>
                         <div class="mb-6">
                             <div class="mb-6">
-                                <h2 class="mb-2 text-lg font-bold text-gray-700">Informations techniques :</h2>
-                                <div class="bg-gray-100 dark:bg-gray-700 rounded-xl">
+                                <div class="rounded-xl">
                                     <div class="p-3 lg:p-6">
                                         <h3 class="text-xs font-semibold uppercase text-gray-500 mb-4">Mensurations :</h3>
                                         <div class="flex flex-wrap gap-x-10 gap-y-4">
@@ -165,6 +164,57 @@
                         </div>
                     </div>
                 </div>
+            </div>
+        </div>
+        <div>
+            <div class="px-4 sm:px-0">
+                <h3 class="text-base font-semibold leading-7 text-gray-900"><?= $product['title'] ?></h3>
+                <p class="mt-1 max-w-2xl text-sm leading-6 text-gray-500"><?= $product['caption'] ?></p>
+            </div>
+            <div class="mt-6 border-t border-gray-100">
+                <dl class="divide-y divide-gray-100">
+                    <div class="px-4 py-6 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0">
+                        <dt class="text-sm font-medium leading-6 text-gray-900">Brand</dt>
+                        <dd class="mt-1 text-sm leading-6 text-gray-700 sm:col-span-2 sm:mt-0"><?= ucfirst($product['brand']) ?></dd>
+                    </div>
+                    <div class="px-4 py-6 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0">
+                        <dt class="text-sm font-medium leading-6 text-gray-900">Matériaux</dt>
+                        <dd class="mt-1 text-sm leading-6 text-gray-700 sm:col-span-2 sm:mt-0"><?= ucfirst($product['material'] )?></dd>
+                    </div>
+                    <div class="px-4 py-6 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0">
+                        <dt class="text-sm font-medium leading-6 text-gray-900">Montage</dt>
+                        <dd class="mt-1 text-sm leading-6 text-gray-700 sm:col-span-2 sm:mt-0"><?= ucfirst($product['assembly']) ?></dd>
+                    </div>
+                    <div class="px-4 py-6 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0">
+                        <dt class="text-sm font-medium leading-6 text-gray-900">Quantité disponible</dt>
+                        <dd class="mt-1 text-sm leading-6 text-gray-700 sm:col-span-2 sm:mt-0"><?= ucfirst($product['quantity']) ?></dd>
+                    </div>
+                    <div class="px-4 py-6 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0">
+                        <dt class="text-sm font-medium leading-6 text-gray-900">Description</dt>
+                        <dd class="mt-1 text-sm leading-6 text-gray-700 sm:col-span-2 sm:mt-0"><?= ucfirst($product['description']) ?></dd>
+                    </div>
+                    <div class="px-4 py-6 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0">
+                        <dt class="text-sm font-medium leading-6 text-gray-900">Pièce(s) jointe(s)</dt>
+                        <dd class="mt-2 text-sm text-gray-900 sm:col-span-2 sm:mt-0">
+                            <ul role="list" class="divide-y divide-gray-100 rounded-md border border-gray-200">
+                                <li class="flex items-center justify-between py-4 pl-4 pr-5 text-sm leading-6">
+                                    <div class="flex w-0 flex-1 items-center">
+                                        <svg class="h-5 w-5 flex-shrink-0 text-gray-400" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+                                            <path fill-rule="evenodd" d="M15.621 4.379a3 3 0 00-4.242 0l-7 7a3 3 0 004.241 4.243h.001l.497-.5a.75.75 0 011.064 1.057l-.498.501-.002.002a4.5 4.5 0 01-6.364-6.364l7-7a4.5 4.5 0 016.368 6.36l-3.455 3.553A2.625 2.625 0 119.52 9.52l3.45-3.451a.75.75 0 111.061 1.06l-3.45 3.451a1.125 1.125 0 001.587 1.595l3.454-3.553a3 3 0 000-4.242z" clip-rule="evenodd" />
+                                        </svg>
+                                        <div class="ml-4 flex min-w-0 flex-1 gap-2">
+                                            <span class="truncate font-medium">reborn_disclaimer.pdf</span>
+                                            <span class="flex-shrink-0 text-gray-400">2.4mb</span>
+                                        </div>
+                                    </div>
+                                    <div class="ml-4 flex-shrink-0">
+                                        <a href="<?= BASE_URL ?>public/assets/uploads/files/reborn_disclaimer.pdf" class="font-medium text-indigo-600 hover:text-indigo-500" download>Télécharger</a>
+                                    </div>
+                                </li>
+                            </ul>
+                        </dd>
+                    </div>
+                </dl>
             </div>
         </div>
     </section>

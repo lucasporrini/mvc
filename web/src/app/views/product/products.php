@@ -6,6 +6,8 @@
             'header_informations' => $header_informations
         ]
     );
+
+    $now = new DateTime();
 ?>
 
 <main>
@@ -13,7 +15,15 @@
     <section class="container mx-auto p-10 md:py-12 px-0 md:p-8 md:px-0">
         <section class="p-5 grid grid-cols-1 sm:grid-cols-1 md:grid-cols-2 xl:grid-cols-3 2xl:grid-cols-4 gap-10 items-start ">
             <?php foreach($products as $product): ?>
-                <a href="/product/<?= $product['slug'] ?>" class="border border-blue-200 rounded-md dark:border-none">
+                <a href="/product/<?= $product['slug'] ?>" class="border <?= $product['quantity'] > 0 ? "border-blue-200" : "border-gray-200" ?> rounded-md dark:border-none relative">
+                    <?php
+                        $productDate = new DateTime($product['created_at']);
+                        $productInterval = $now->diff($productDate);
+                        
+                        if ($productInterval->days < 7) {
+                            echo '<span class="absolute right-2 top-2 border border-1 border-green-600 ml-3 px-2.5 py-0.5 text-xs text-green-600 bg-green-200 rounded-xl">Nouveauté</span>';
+                        };
+                    ?>
                     <div class="bg-gray-200 ">
                         <img src="<?= isset($product['photos'][0]['photo']) && !empty($product['photos'][0]['photo']) ? BASE_URL . "public/assets/uploads/product/" . $product['id'] . "/" . $product['photos'][0]['photo'] : BASE_URL . "public/assets/uploads/product/default/default.png" ?>" class="object-cover w-full h-56 mx-auto" alt="">
                     </div>

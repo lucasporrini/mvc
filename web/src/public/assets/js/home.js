@@ -58,4 +58,13 @@ document.addEventListener("DOMContentLoaded", function() {
             tab.classList.add("active");
         });
     })
+
+    const heroButton = document.getElementById("heroButton");
+    const sectionOnPage = document.querySelectorAll("section");
+
+    console.log(sectionOnPage);
+
+    heroButton.addEventListener("click", () => {
+        sectionOnPage[1].scrollIntoView({ behavior: "smooth" });
+    });
 });

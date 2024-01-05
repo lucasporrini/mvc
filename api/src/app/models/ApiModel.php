@@ -56,6 +56,17 @@ class ApiModel
         
         return true;
     }
+
+    public function authenticate_user($email, $password)
+    {
+        $user = $this->db->simpleSelect('*', 'users', ['email' => $email]);
+        
+        if ($user && password_verify($password, $user['password'])) {
+            return $user; // L'utilisateur est authentifié avec succès
+        } else {
+            return false; // Échec de l'authentification
+        }
+    }
     
     public function get_menu()
     {

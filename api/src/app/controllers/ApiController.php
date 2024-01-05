@@ -26,6 +26,35 @@ class ApiController
         echo json_encode($menu, JSON_UNESCAPED_UNICODE);
     }
 
+    public function login()
+    {
+        // On récupère le token dans le header
+        $headers = apache_request_headers();
+        $token = $headers['Authorization'];
+
+        if($this->apiModel->middleware_auth($token)) {
+            // Récupérer les données
+            $data = json_decode(file_get_contents('php://input'), true);
+            
+            $email = $data['email'];
+            $password = $data['password'];
+
+            if(!$email || !$password) {
+                header('Content-Type: application/json');
+                echo json_encode(['error' => 'Veuillez renseigner tous les champs']);
+                exit;
+            }
+
+            $user = $this->apiModel->authenticate_user($email, $password);
+            
+            if($user) {
+                echo json_encode(['success' => 'Vous êtes connecté', 'user' => $user]);
+            } else {
+                echo json_encode(['error' => 'L\'authentification a échoué']);
+            }
+        }
+    }
+
     public function get_user($user_id)
     {
         // On récupère le token dans le header

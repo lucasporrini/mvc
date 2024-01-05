@@ -134,8 +134,43 @@ class MainController
 
     public function login()
     {
+        // On récupère les données du formulaire
+        $email = $_POST['email'];
+        $password = $_POST['password'];
+
+        // On vérifie que les données sont bien présentes
+        if(!isset($email) || !isset($password)) {
+            http_response_code(400);
+            echo json_encode(['error' => 'Veuillez renseigner tous les champs']);
+            exit;
+        }
+
+        // On vérifie que l'email est bien au bon format
+        if(!filter_var($email, FILTER_VALIDATE_EMAIL)) {
+            http_response_code(400);
+            echo json_encode(['error' => 'Veuillez renseigner un email valide']);
+            exit;
+        }
+
+        // On vérifie que l'email existe bien en base de données
+        $response = $this->apiModel->login($email, $password);
         
-        // Logique de connexion
+        // On décode la réponse
+        $response = json_decode($response, true);
+        
+        // On vérifie la réponse
+        if(isset($response['success'])) {
+            // On connecte l'utilisateur
+            $_SESSION['user'] = $response['user'];
+
+            // On retourne la réponse
+            header('Location: /admin');
+            exit;
+        } else {
+            header('Location: /login');
+            $_SESSION['error_message'] = 'Email ou mot de passe incorrect';
+            exit;
+        }
     }
 
     public function render_register()

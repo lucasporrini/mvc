@@ -49,6 +49,42 @@ class ApiModel
         return $json;
     }
 
+    public function login($email, $password)
+    {
+        // Construction de l'url d'appel
+        $url = $this->apiBaseUrl . 'login';
+
+        // Initialisation des données
+        $data = json_encode([
+            'email' => $email,
+            'password' => $password
+        ]);
+
+        // Initialisation de la session
+        $curl = curl_init($url);
+
+        // Configuration des options de transfert
+        curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
+        curl_setopt($curl, CURLOPT_POST, true);
+        curl_setopt($curl, CURLOPT_POSTFIELDS, $data);
+        curl_setopt($curl, CURLOPT_HTTPHEADER,[
+            'Content-Type: application/json',
+            'Authorization: Bearer ' . getenv('token')
+        ]);
+
+        // Exécuter la requête
+        $response = curl_exec($curl);
+
+        // Fermer la session
+        curl_close($curl);
+
+        // Retourner les données
+        return $response;
+
+        // Vérifier si l'utilisateur existe
+        $json = json_decode($user, JSON_UNESCAPED_UNICODE);
+    }
+
     public function get_user($user_id)
     {
         // Récupérer les données

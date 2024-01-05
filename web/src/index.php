@@ -14,10 +14,12 @@ $routes = require 'app/router/Route.php';
 
 // charger les Controllers
 require_once 'app/Controllers/MainController.php';
+require_once 'app/Controllers/AdminController.php';
 
 // charger les models
 $router = new Router($_GET['url']);
 $MainController = new MainController();
+$AdminController = new AdminController();
 
 // Tester le mode debug
 if ($_CONFIG["site"]["debug"] === true) {

@@ -26,6 +26,9 @@ $router->get('/user/:id', [$MainController, 'render_user'])->with('id', '[0-9]+'
 $router->get('/politique-de-confidentialite', [$MainController, 'render_privacy_policy']);
 $router->get('/cookies-policy', [$MainController, 'render_cookies_policy']);
 
+// Route pour l'administration
+$router->get('/admin', [$AdminController, 'render_admin']);
+
 // Gestion de la 404
 $router->get('/404', [$MainController, 'render_error']);
 

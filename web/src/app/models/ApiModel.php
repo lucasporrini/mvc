@@ -49,6 +49,22 @@ class ApiModel
         return $json;
     }
 
+    public function get_header_admin()
+    {
+        // Récupérer les données
+        $menu = $this->api_call('/get_header_admin', '');
+
+        $json = json_decode($menu, JSON_UNESCAPED_UNICODE);
+        if($json === false) {
+            http_response_code(500);
+            echo json_encode(['error' => 'Erreur interne']);
+            exit;
+        }
+
+        // Retourner les données
+        return $json;
+    }
+
     public function login($email, $password)
     {
         // Construction de l'url d'appel

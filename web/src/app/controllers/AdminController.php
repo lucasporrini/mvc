@@ -13,31 +13,13 @@ class AdminController
         $this->apiModel = new ApiModel();
     }
 
-    public function get_header()
+    public function get_header_admin()
     {
         // Récupérer les données
-        $menu = $this->apiModel->get_header();
+        $menu = $this->apiModel->get_header_admin();
 
         // Retourner les données
         return $menu;
-    }
-
-    public function get_categories()
-    {
-        // Récupérer les données
-        $categories = $this->apiModel->get_categories();
-
-        // Retourner les données
-        return $categories;
-    }
-
-    public function get_subcategories()
-    {
-        // Récupérer les données
-        $subcategories = $this->apiModel->get_subcategories();
-
-        // Retourner les données
-        return $subcategories;
     }
 
     public function get_company()
@@ -52,16 +34,12 @@ class AdminController
     public function get_header_informations()
     {
         //Récupérer les données
-        $menu = $this->get_header();
-        $categories_in_menu = $this->get_categories();
-        $subcategories_in_menu = $this->get_subcategories();
+        $menu = $this->get_header_admin();
         $company = $this->get_company();
 
         // Retourner les données
         return [
             'menu' => $menu,
-            'categories_in_menu' => $categories_in_menu,
-            'subcategories_in_menu' => $subcategories_in_menu,
             'company' => $company
         ];
     }

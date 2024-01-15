@@ -26,6 +26,21 @@ class ApiController
         echo json_encode($menu, JSON_UNESCAPED_UNICODE);
     }
 
+    public function get_header_admin()
+    {
+         // Récupérer les données
+         $menu = $this->apiModel->get_menu_admin();
+
+         // Tri des données
+         usort($menu, function ($a, $b) {
+             return $a['priority'] <=> $b['priority'];
+         });
+ 
+         // Retourner les données en json
+         header('Content-Type: application/json');
+         echo json_encode($menu, JSON_UNESCAPED_UNICODE);
+    }
+
     public function login()
     {
         // On récupère le token dans le header

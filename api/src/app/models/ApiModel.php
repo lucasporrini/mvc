@@ -71,7 +71,12 @@ class ApiModel
     
     public function get_menu()
     {
-        return $this->db->select('*', 'menus');
+        return $this->db->select('*', 'menus', ['admin' => 0, 'active' => 1]);
+    }
+
+    public function get_menu_admin()
+    {
+        return $this->db->select('*', 'menus', ['admin' => 1, 'active' => 1]);
     }
 
     public function get_user($user_id)

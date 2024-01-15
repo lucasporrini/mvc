@@ -80,9 +80,6 @@ class ApiModel
 
         // Retourner les données
         return $response;
-
-        // Vérifier si l'utilisateur existe
-        $json = json_decode($user, JSON_UNESCAPED_UNICODE);
     }
 
     public function get_user($user_id)

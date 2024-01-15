@@ -27,7 +27,7 @@ $router->get('/politique-de-confidentialite', [$MainController, 'render_privacy_
 $router->get('/cookies-policy', [$MainController, 'render_cookies_policy']);
 
 // Route pour l'administration
-$router->get('/admin', [$AdminController, 'render_admin']);
+$router->get('/admin', [$AdminController, 'render_admin'], $requireAuth=true);
 
 // Gestion de la 404
 $router->get('/404', [$MainController, 'render_error']);

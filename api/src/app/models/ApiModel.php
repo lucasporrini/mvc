@@ -62,6 +62,7 @@ class ApiModel
         $user = $this->db->simpleSelect('*', 'users', ['email' => $email]);
         
         if ($user && password_verify($password, $user['password'])) {
+            $user['logged_in'] = true;
             return $user; // L'utilisateur est authentifié avec succès
         } else {
             return false; // Échec de l'authentification

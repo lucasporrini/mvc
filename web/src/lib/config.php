@@ -37,6 +37,9 @@ define('RELATIVE_PATH_PARTIALS',        RELATIVE_PATH_PUBLIC . DS . 'partials');
 // Configuration des relatives paths "functions"
 define('RELATIVE_PATH_FUNCTIONS',       RELATIVE_PATH_PUBLIC . DS . 'functions');
 
+// Lancement de la SESSION
+session_start();
+
 // Importer valeurs du .env
 if(!file_exists('.env')) {
     return;

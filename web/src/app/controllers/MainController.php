@@ -118,6 +118,12 @@ class MainController
 
     public function render_login()
     {
+        // On vérifie que l'utilisateur est connecté et qu'il soit admin
+        if(isset($_SESSION['user']) && $_SESSION['user']['role'] == 'admin') {
+            header('Location: /admin');
+            exit;
+        }
+
         // Récupérer les données du header
         $header_informations = $this->get_header_informations();
 

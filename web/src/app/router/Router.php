@@ -33,7 +33,6 @@ class Router {
         if (!isset($_SESSION['user']['logged_in']) || $_SESSION['user']['logged_in'] === false) {
             return false;
         }
-
         return true;
     }
 

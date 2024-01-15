@@ -179,6 +179,16 @@ class MainController
         }
     }
 
+    public function logout()
+    {
+        // On déconnecte l'utilisateur
+        unset($_SESSION['user']);
+
+        // On retourne la réponse
+        header('Location: /');
+        exit;
+    }
+
     public function render_register()
     {
         // Récupérer les données du header

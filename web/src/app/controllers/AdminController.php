@@ -89,4 +89,13 @@ class AdminController
             ]
         );
     }
+
+    public function delete_product($slug)
+    {
+        // Récupérer les données
+        $deletedProduct = $this->apiModel->delete_product($slug);
+
+        // Retourner les données
+        return $deletedProduct;
+    }
 }

@@ -19,5 +19,6 @@ $router->get('/categorie/:slug', [$ApiController, 'get_categorie_by_slug'])->wit
 $router->get('/subcategories', [$ApiController, 'get_subcategories']);
 $router->get('/chantier/:id', [$ApiController, 'get_location_by_id'])->with('id', '[0-9]+');
 $router->get('/address', [$ApiController, 'get_company_address']);
+$router->get('/delete-product/:slug', [$ApiController, 'delete_product']);
 
 $router->run();

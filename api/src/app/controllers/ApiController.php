@@ -278,4 +278,20 @@ class ApiController
             echo json_encode($company_address, JSON_UNESCAPED_UNICODE);
         }
     }
+
+    public function delete_product($slug)
+    {
+        // On récupère le token dans le header
+        $headers = apache_request_headers();
+        $token = $headers['Authorization'];
+        
+        if($this->apiModel->middleware_auth($token)) {
+            // Récupérer les données
+            $deletedProduct = $this->apiModel->delete_product($slug);
+            
+            // Retourner les données en json
+            header('Content-Type: application/json');
+            echo json_encode($deletedProduct, JSON_UNESCAPED_UNICODE);
+        }
+    }
 }

@@ -295,4 +295,21 @@ class ApiModel
         // Retourner les données
         return $json;
     }
+
+    public function delete_product($slug)
+    {
+        // Récupérer les données
+        $deletedProduct = $this->api_call('/delete-product/' . $slug, getenv('token'));
+
+        // Vérifier si la société existe
+        $json = json_decode($deletedProduct, JSON_UNESCAPED_UNICODE);
+        if($json === false) {
+            http_response_code(500);
+            echo json_encode(['error' => 'Erreur interne']);
+            exit;
+        }
+        
+        // Retourner les données
+        return $json;
+    }
 }

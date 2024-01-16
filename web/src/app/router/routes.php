@@ -30,6 +30,9 @@ $router->get('/cookies-policy', [$MainController, 'render_cookies_policy']);
 $router->get('/admin', [$AdminController, 'render_admin'], $requireAuth=true);
 $router->get('/admin-products', [$AdminController, 'render_admin_products'], $requireAuth=true);
 
+// Route pour l'administration des produits
+$router->get('/delete-product/:slug', [$AdminController, 'delete_product']);
+
 // Gestion de la 404
 $router->get('/404', [$MainController, 'render_error']);
 

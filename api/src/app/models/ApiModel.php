@@ -134,4 +134,9 @@ class ApiModel
     {
         return $this->db->simpleSelect('*', 'locations', ['id' => $id]);
     }
+
+    public function delete_product($slug)
+    {
+        return $this->db->update('products', ['active' => 0], ['slug' => $slug]);
+    }
 }

@@ -66,7 +66,13 @@ class AdminController
         $header_informations = $this->get_header_informations();
 
         // Récupérer les données du get
-        $get = $_GET['page'];
+        if(count($_GET) > 2) {
+            $slug = strval($_GET['slug']);
+            
+            $item = $this->apiModel->get_product_by_slug($slug);
+        } else {
+            $item = null;
+        };
 
         // Récupérer les 50 derniers produits
         $products = $this->apiModel->get_last_fiveteen_products();
@@ -78,8 +84,8 @@ class AdminController
                 'title' => 'Page d\'administration',
                 'title_in_page' => 'Bienvenue sur votre dashboard',
                 'header_informations' => $header_informations,
-                'page' => $get,
-                'products' => $products
+                'products' => $products,
+                'item' => $item
             ]
         );
     }

@@ -6,6 +6,7 @@
 $router->get('/get_header', [$ApiController, 'get_header']);
 $router->get(('/get_header_admin'), [$ApiController, 'get_header_admin']);
 $router->post('/login', [$ApiController, 'login']);
+$router->get('/get_last_fiveteen_products', [$ApiController, 'get_last_fiveteen_products']);
 
 $router->get('/user/:id', [$ApiController, 'get_user'])->with('id', '[0-9]+');
 $router->get('/products', [$ApiController, 'get_products']);

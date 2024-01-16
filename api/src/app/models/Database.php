@@ -32,7 +32,7 @@ class Database {
         }
     }
 
-    public function select($columns, $table, $conditions = [], $limit = null) {
+    public function select($columns, $table, $conditions = [], $limit = null, $order = null) {
         $sql = "SELECT $columns FROM $table";
         $params = [];
 
@@ -48,6 +48,10 @@ class Database {
         if (!empty($limit)) {
             $sql .= " LIMIT :limit";
             $params[':limit'] = $limit;
+        }
+
+        if (!empty($order)) {
+            $sql .= " ORDER BY $order";
         }
 
         return $this->query($sql, $params)->fetchAll(PDO::FETCH_ASSOC);

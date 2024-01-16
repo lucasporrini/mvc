@@ -112,6 +112,22 @@ class ApiController
         }
     }
 
+    public function get_last_fiveteen_products()
+    {
+        // On récupère le token dans le header
+        $headers = apache_request_headers();
+        $token = $headers['Authorization'];
+
+        if($this->apiModel->middleware_auth($token)) {
+            // Récupérer les données
+            $product = $this->apiModel->get_last_fiveteen_products();
+
+            // Retourner les données en json
+            header('Content-Type: application/json');
+            echo json_encode($product, JSON_UNESCAPED_UNICODE);
+        }
+    }
+
     public function get_product($slug)
     {
         // On récupère le token dans le header

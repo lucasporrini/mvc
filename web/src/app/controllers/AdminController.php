@@ -68,6 +68,9 @@ class AdminController
         // Récupérer les données du get
         $get = $_GET['page'];
 
+        // Récupérer les 50 derniers produits
+        $products = $this->apiModel->get_last_fiveteen_products();
+
         // Inclure la vue correspondante
         echo $this->pages->render(
             'admin/products',
@@ -75,7 +78,8 @@ class AdminController
                 'title' => 'Page d\'administration',
                 'title_in_page' => 'Bienvenue sur votre dashboard',
                 'header_informations' => $header_informations,
-                'page' => $get
+                'page' => $get,
+                'products' => $products
             ]
         );
     }

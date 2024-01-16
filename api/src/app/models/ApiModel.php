@@ -99,6 +99,11 @@ class ApiModel
         return $this->db->select('*', 'products', ['category_id' => $cat_id]);
     }
 
+    public function get_last_fiveteen_products()
+    {
+        return $this->db->select('*', 'products', [], 50);
+    }
+
     public function get_company()
     {
         return $this->db->select('*', 'company');

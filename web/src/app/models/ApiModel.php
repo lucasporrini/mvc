@@ -132,6 +132,20 @@ class ApiModel
         return $json;
     }
 
+    public function get_last_fiveteen_products() {
+        // Récupérer les données
+        $products = $this->api_call('/get_last_fiveteen_products', getenv('token'));
+
+        // Vérifier si les produits existent
+        $json = json_decode($products, JSON_UNESCAPED_UNICODE);
+        if($json === false) {
+            return false;
+        }
+
+        // Retourner les données
+        return $json;
+    }
+
     public function get_product_by_slug($slug)
     {
         // Récupérer les données

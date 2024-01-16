@@ -28,6 +28,7 @@ $router->get('/cookies-policy', [$MainController, 'render_cookies_policy']);
 
 // Route pour l'administration
 $router->get('/admin', [$AdminController, 'render_admin'], $requireAuth=true);
+$router->get('/admin-products', [$AdminController, 'render_admin_products'], $requireAuth=true);
 
 // Gestion de la 404
 $router->get('/404', [$MainController, 'render_error']);

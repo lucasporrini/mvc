@@ -59,4 +59,24 @@ class AdminController
             ]
         );
     }
+
+    public function render_admin_products()
+    {
+        // Récupérer les données du header
+        $header_informations = $this->get_header_informations();
+
+        // Récupérer les données du get
+        $get = $_GET['page'];
+
+        // Inclure la vue correspondante
+        echo $this->pages->render(
+            'admin/products',
+            [
+                'title' => 'Page d\'administration',
+                'title_in_page' => 'Bienvenue sur votre dashboard',
+                'header_informations' => $header_informations,
+                'page' => $get
+            ]
+        );
+    }
 }

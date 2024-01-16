@@ -20,7 +20,7 @@
                     <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-800 dark:text-gray-200"><?= $product['quantity'] ?></td>
                     <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-800 dark:text-gray-200"><?= $product['unite'] ?></td>
                     <td class="px-6 py-4 whitespace-nowrap text-end text-sm font-medium">
-                        <button type="button" class="inline-flex items-center gap-x-2 text-sm font-semibold rounded-lg border border-transparent text-blue-600 hover:text-blue-800 disabled:opacity-50 disabled:pointer-events-none dark:text-blue-500 dark:hover:text-blue-400 dark:focus:outline-none dark:focus:ring-1 dark:focus:ring-gray-600">Modifier</button>
+                        <a class="inline-flex items-center gap-x-2 text-sm font-semibold rounded-lg border border-transparent text-blue-600 hover:text-blue-800">Modifier</a>
                     </td>
                 </tr>
             <?php } ?>

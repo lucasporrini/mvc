@@ -45,5 +45,9 @@
         } ?>
       </ul>
     </nav>
+    <div class="py-3 px-7 -m-2 bg-gray-100 rounded-t-lg dark:bg-gray-700">
+        <p class="text-sm text-gray-500 dark:text-gray-400">Connecté en tant que</p>
+        <p class="text-sm font-medium text-gray-800 dark:text-gray-300"><?= $_SESSION['user']['email'] ?></p>
+    </div>
   </div>
   <!-- End Sidebar -->

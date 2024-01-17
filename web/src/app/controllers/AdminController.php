@@ -66,7 +66,7 @@ class AdminController
         $header_informations = $this->get_header_informations();
 
         // Récupérer les données du get
-        if(count($_GET) > 2) {
+        if(count($_GET) > 2 && isset($_GET['slug'])) {
             $slug = strval($_GET['slug']);
             
             $item = $this->apiModel->get_product_by_slug($slug);
@@ -94,6 +94,14 @@ class AdminController
     {
         // Récupérer les données
         $deletedProduct = $this->apiModel->delete_product($slug);
+        
+        if($deletedProduct['success']) {
+            header('Location: /admin/products');
+            exit;
+        } else {
+            header('Location: /admin/products?error=1');
+            exit;
+        }
 
         // Retourner les données
         return $deletedProduct;

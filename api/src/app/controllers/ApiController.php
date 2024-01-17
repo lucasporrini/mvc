@@ -289,9 +289,17 @@ class ApiController
             // Récupérer les données
             $deletedProduct = $this->apiModel->delete_product($slug);
             
-            // Retourner les données en json
-            header('Content-Type: application/json');
-            echo json_encode($deletedProduct, JSON_UNESCAPED_UNICODE);
+            if($deletedProduct !== null) {
+                header('Content-Type: application/json');
+                http_response_code(500);
+                echo json_encode(['error' => 'Erreur interne']);
+                exit;
+            } else {
+                // Retourner les données en json
+                header('Content-Type: application/json');
+                http_response_code(200);
+                echo json_encode(['success' => 'Produit supprimé avec succès'], JSON_UNESCAPED_UNICODE);
+            }
         }
     }
 }

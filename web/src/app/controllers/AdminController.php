@@ -96,14 +96,25 @@ class AdminController
         $deletedProduct = $this->apiModel->delete_product($slug);
         
         if($deletedProduct['success']) {
-            header('Location: /admin/products');
+            header('Location: /admin-products?page=delete&success=1');
             exit;
         } else {
-            header('Location: /admin/products?error=1');
+            header('Location: /admin-products?page=delete&error=1');
             exit;
         }
+    }
 
-        // Retourner les données
-        return $deletedProduct;
+    public function enable_product($slug)
+    {
+        // Récupérer les données
+        $enabledProduct = $this->apiModel->enable_product($slug);
+        
+        if($enabledProduct['success']) {
+            header('Location: /admin-products?page=delete&success=1');
+            exit;
+        } else {
+            header('Location: /admin-products?page=delete&error=1');
+            exit;
+        }
     }
 }

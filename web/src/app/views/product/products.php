@@ -15,6 +15,7 @@
     <section class="container mx-auto p-10 md:py-12 px-0 md:p-8 md:px-0">
         <section class="p-5 grid grid-cols-1 sm:grid-cols-1 md:grid-cols-2 xl:grid-cols-3 2xl:grid-cols-4 gap-10 items-start ">
             <?php foreach($products as $product): ?>
+                <?php if($product['active'] == 0) continue; ?>
                 <a href="/product/<?= $product['slug'] ?>" class="border <?= $product['quantity'] > 0 ? "border-blue-200" : "border-gray-200" ?> rounded-md dark:border-none relative">
                     <?php
                         $productDate = new DateTime($product['created_at']);

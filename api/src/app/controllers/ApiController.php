@@ -302,4 +302,28 @@ class ApiController
             }
         }
     }
+
+    public function enable_product($slug)
+    {
+        // On récupère le token dans le header
+        $headers = apache_request_headers();
+        $token = $headers['Authorization'];
+        
+        if($this->apiModel->middleware_auth($token)) {
+            // Récupérer les données
+            $enabledProduct = $this->apiModel->enable_product($slug);
+            
+            if($enabledProduct !== null) {
+                header('Content-Type: application/json');
+                http_response_code(500);
+                echo json_encode(['error' => 'Erreur interne']);
+                exit;
+            } else {
+                // Retourner les données en json
+                header('Content-Type: application/json');
+                http_response_code(200);
+                echo json_encode(['success' => 'Produit activé avec succès'], JSON_UNESCAPED_UNICODE);
+            }
+        }
+    }
 }

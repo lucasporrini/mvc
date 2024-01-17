@@ -1,10 +1,11 @@
 <div class="flex flex-col pt-2">
   <div class="-m-1.5 overflow-x-auto">
     <?php
-        if(isset($_GET['error'])) {
-            if($_GET['error'] == 1) {
-                echo '<div class="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded relative my-2" role="alert"><strong class="font-bold">Erreur !</strong><span class="block sm:inline"> La suppression n\'a pas pu avoir lieu.</span></div>';
-            
+        if(isset($_GET['error']) || isset($_GET['success'])) {
+            if(isset($_GET['error']) && $_GET['error'] == 1) {
+                echo '<div class="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded relative my-2" role="alert"><strong class="font-bold">Erreur !</strong><span class="block sm:inline"> Echec de la requête.</span></div>';
+            } else if(isset($_GET['success']) && $_GET['success'] == 1) {
+                echo '<div class="bg-green-100 border border-green-400 text-green-700 px-4 py-3 rounded relative my-2" role="alert"><strong class="font-bold">Succès !</strong><span class="block sm:inline"> Requête efféctuée avec succès.</span></div>';
             }
         }
     ?>
@@ -30,9 +31,9 @@
                     <td class="px-6 py-4 whitespace-nowrap text-end text-sm font-medium">
                         <?php
                             if($product['active'] == 1) {
-                                echo '<a href="delete-product/' . $product['slug'] . '" class="inline-flex items-center gap-x-2 text-sm font-semibold rounded-lg border border-transparent text-blue-600 hover:text-blue-800">Désactiver</a>';
+                                echo '<a href="delete-product/' . $product['slug'] . '" class="inline-flex items-center gap-x-2 text-sm font-semibold rounded-lg border border-transparent text-red-500 hover:text-red-600">Désactiver</a>';
                             } else {
-                                echo '<a href="enable-product/' . $product['slug'] . '" class="inline-flex items-center gap-x-2 text-sm font-semibold rounded-lg border border-transparent text-blue-600 hover:text-blue-800">Activer</a>';
+                                echo '<a href="enable-product/' . $product['slug'] . '" class="inline-flex items-center gap-x-2 text-sm font-semibold rounded-lg border border-transparent text-green-500 hover:text-green-600">Activer</a>';
                             }
                         ?>
                     </td>

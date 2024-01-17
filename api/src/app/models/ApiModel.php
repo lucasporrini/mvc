@@ -139,4 +139,9 @@ class ApiModel
     {
         return $this->db->update('products', ['active' => 0], ['slug' => $slug]);
     }
+
+    public function enable_product($slug)
+    {
+        return $this->db->update('products', ['active' => 1], ['slug' => $slug]);
+    }
 }

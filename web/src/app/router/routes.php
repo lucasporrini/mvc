@@ -32,6 +32,7 @@ $router->get('/admin-products', [$AdminController, 'render_admin_products'], $re
 
 // Route pour l'administration des produits
 $router->get('/delete-product/:slug', [$AdminController, 'delete_product']);
+$router->get('/enable-product/:slug', [$AdminController, 'enable_product']);
 
 // Gestion de la 404
 $router->get('/404', [$MainController, 'render_error']);

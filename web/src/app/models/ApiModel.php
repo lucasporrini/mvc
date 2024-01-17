@@ -312,4 +312,21 @@ class ApiModel
         // Retourner les données
         return $json;
     }
+
+    public function enable_product($slug)
+    {
+        // Récupérer les données
+        $enabledProduct = $this->api_call('/enable-product/' . $slug, getenv('token'));
+
+        // Vérifier si la société existe
+        $json = json_decode($enabledProduct, JSON_UNESCAPED_UNICODE);
+        if($json === false) {
+            http_response_code(500);
+            echo json_encode(['error' => 'Erreur interne']);
+            exit;
+        }
+        
+        // Retourner les données
+        return $json;
+    }
 }

@@ -326,4 +326,29 @@ class ApiController
             }
         }
     }
+
+    public function get_structure($table)
+    {
+        // On récupère le token dans le header
+        $headers = apache_request_headers();
+        $token = $headers['Authorization'];
+        
+        if($this->apiModel->middleware_auth($token)) {
+            // Récupérer les données
+            $structure = $this->apiModel->get_structure($table);
+            
+            if($structure !== null) {
+                // Retourner les données en json
+                header('Content-Type: application/json');
+                http_response_code(200);
+                echo json_encode(['success' => 'Structure récupérée avec succès', 'structure' => $structure], JSON_UNESCAPED_UNICODE);
+                exit;
+            } else {
+                header('Content-Type: application/json');
+                http_response_code(500);
+                echo json_encode(['error' => 'Erreur interne']);
+                exit;
+            }
+        }
+    }
 }

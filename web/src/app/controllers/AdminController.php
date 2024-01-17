@@ -74,6 +74,9 @@ class AdminController
             $item = null;
         };
 
+        // Récupérer la structure de la base de données
+        $structure = $this->apiModel->get_structure("products");
+
         // Récupérer les 50 derniers produits
         $products = $this->apiModel->get_last_fiveteen_products();
 

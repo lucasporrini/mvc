@@ -14,8 +14,9 @@
             <div>
                 <label for="<?= $key ?>" class="block text-sm font-medium text-gray-700"><?= ucfirst($key) ?></label>
                 <input type="text" name="<?= $key ?>" id="<?= $key ?>" class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50" value="<?= getValue($item, $key) ?>">
-            </div>
+            </div class="flex">
         <?php else: // Gérer le cas particulier des photos ?>
+            <div class="max-w-xs flex gap-2">
             <?php 
                 $photos = json_decode($value, true); 
                 if ($photos):
@@ -24,8 +25,10 @@
                 <div>
                     <label for="photo<?= $index ?>" class="block text-sm font-medium text-gray-700">Photo <?= $index + 1 ?></label>
                     <input type="text" name="photos[]" id="photo<?= $index ?>" class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50" value="<?= htmlspecialchars($photo['photo']) ?>">
+                    <img id="preview<?= $index ?>" src="public/assets/uploads/product/<?= $item['id']?>/<?= htmlspecialchars($photo['photo']) ?>" alt="Photo Preview" class="mt-2 rounded-md max-w-xs max-h-32" style="display: <?= $photo['photo'] ? 'block' : 'none' ?>;">
                 </div>
             <?php endforeach; endif; ?>
+            </div>
         <?php endif; ?>
     <?php endforeach; ?>
 

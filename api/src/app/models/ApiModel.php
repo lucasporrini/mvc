@@ -144,4 +144,10 @@ class ApiModel
     {
         return $this->db->update('products', ['active' => 1], ['slug' => $slug]);
     }
+
+    public function get_structure($table)
+    {
+        $sql = "SHOW COLUMNS FROM " . $table;
+        return $this->db->query($sql)->fetchAll(PDO::FETCH_ASSOC);
+    }
 }

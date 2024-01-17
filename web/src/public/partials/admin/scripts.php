@@ -8,3 +8,4 @@
         <?php
     }
 ?>
+<script src="<?= BASE_URL ?>public/assets/js/back.js"></script>

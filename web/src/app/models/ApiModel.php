@@ -333,7 +333,7 @@ class ApiModel
     public function get_structure($table)
     {
         // Récupérer les données
-        $structure = $this->api_call('/get_structure/' + $table, getenv('token'));
+        $structure = $this->api_call('/get_structure/' . $table, getenv('token'));
 
         // Vérifier si la société existe
         $json = json_decode($structure, JSON_UNESCAPED_UNICODE);

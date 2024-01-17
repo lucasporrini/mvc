@@ -77,6 +77,19 @@ class AdminController
         // Récupérer la structure de la base de données
         $structure = $this->apiModel->get_structure("products");
 
+        // Récupérer les enums
+        $enum = [];
+
+        foreach ($structure['structure'] as $field) {
+            if (strpos($field['Type'], 'enum(') === 0) {
+                $enum[$field['Field']] = explode(',', str_replace("'", '', substr($field['Type'], 5, (strlen($field['Type'])-6))));
+                
+                foreach ($enum[$field['Field']] as $key => $value) {
+                    $enum[$field['Field']][$key] = trim($value);
+                }
+            }
+        }
+
         // Récupérer les 50 derniers produits
         $products = $this->apiModel->get_last_fiveteen_products();
 
@@ -88,7 +101,8 @@ class AdminController
                 'title_in_page' => 'Bienvenue sur votre dashboard',
                 'header_informations' => $header_informations,
                 'products' => $products,
-                'item' => $item
+                'item' => $item,
+                'enum' => $enum
             ]
         );
     }

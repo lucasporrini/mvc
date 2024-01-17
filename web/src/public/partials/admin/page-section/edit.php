@@ -44,12 +44,13 @@
     </div>
     <h2 class="text-lg font-semibold">Stockage du produit:</h2>
     <div class="flex gap-3">
-        <div>
+        <div class="flex flex-col gap-1">
             <label for="<?= $item['storage_location'] ?>" class="block text-sm font-medium text-gray-700">Lieu</label>
-            <select name="location" id="location">
-                <option value="1">Intérieur</option>
+            <select name="location" id="location" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg min-w-48 focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+                <?php foreach($enum['storage_location'] as $location): ?>
+                    <option value="<?= $location ?>" <?= $location == $item['storage_location'] ? 'selected' : '' ?>><?= $location ?></option>
+                <?php endforeach; ?>
             </select>
-            <input type="text" name=storage_location id="item-storage_location" class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50" value="<?= $item['storage_location'] ?>">
         </div>
         <div>
             <label for="<?= $item['width'] ?>" class="block text-sm font-medium text-gray-700">Largeur (m)</label>

@@ -31,8 +31,11 @@ $router->get('/admin', [$AdminController, 'render_admin'], $requireAuth=true);
 $router->get('/admin-products', [$AdminController, 'render_admin_products'], $requireAuth=true);
 
 // Route pour l'administration des produits
-$router->get('/delete-product/:slug', [$AdminController, 'delete_product']);
-$router->get('/enable-product/:slug', [$AdminController, 'enable_product']);
+$router->get('/delete-product/:slug', [$AdminController, 'delete_product'], $requireAuth=true);
+$router->get('/enable-product/:slug', [$AdminController, 'enable_product'], $requireAuth=true);
+
+// Route pour l'administration (ajax)
+$router->post('/edit-product/:slug', [$AdminController, 'edit_product'], $requireAuth=true);
 
 // Gestion de la 404
 $router->get('/404', [$MainController, 'render_error']);

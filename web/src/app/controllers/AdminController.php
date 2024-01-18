@@ -134,4 +134,20 @@ class AdminController
             exit;
         }
     }
+
+    public function edit_product($slug)
+    {
+        print_r($_POST);
+        print_r($slug);
+        // // Récupérer les données
+        // $editedProduct = $this->apiModel->edit_product($slug, $_POST);
+        
+        // if($editedProduct['success']) {
+        //     header('Location: /admin-products?page=edit&success=1');
+        //     exit;
+        // } else {
+        //     header('Location: /admin-products?page=edit&error=1');
+        //     exit;
+        // }
+    }
 }

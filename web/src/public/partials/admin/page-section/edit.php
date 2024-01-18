@@ -10,9 +10,15 @@
     <hr>
     <h2 class="text-lg font-semibold">Description du produit:</h2>
     <div>
-        <div>
-            <label for="item-title" class="block text-sm font-medium text-gray-700">Titre</label>
-            <input type="text" name="title" id="item-title" class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50" value="<?= htmlspecialchars($item['title']) ?>">
+        <div class="flex gap-3">
+            <div class="w-full">
+                <label for="item-title" class="block text-sm font-medium text-gray-700">Titre</label>
+                <input type="text" name="title" id="item-title" class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50" value="<?= htmlspecialchars($item['title']) ?>">
+            </div>
+            <div class="w-full">
+                <label for="item-slug" class="block text-sm font-medium text-gray-700">Slug</label>
+                <input type="text" name="slug" id="item-slug" class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50 disabled:bg-slate-50 disabled:text-slate-500 disabled:border-slate-200 disabled:shadow-none" value="<?= htmlspecialchars($item['slug']) ?>" <?= $_SESSION['user']['role'] == "superadmin" ? "" : "disabled" ?>>
+            </div>
         </div>
         <div>
             <label for="item-caption" class="block text-sm font-medium text-gray-700">Légende</label>

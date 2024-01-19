@@ -139,7 +139,8 @@ class AdminController
     {
         // Récupérer les données
         print_r($_POST);
-        print_r($_FILES);
+        $files = $_FILES;
+        print_r($files);
         // $editedProduct = $this->apiModel->edit_product($slug, $_POST);
         
     }

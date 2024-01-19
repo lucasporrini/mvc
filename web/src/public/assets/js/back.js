@@ -55,15 +55,19 @@ document.addEventListener('DOMContentLoaded', function() {
         document.getElementById('submitForm').addEventListener('click', function(e) {
             e.preventDefault();
             
-            // const title = document.getElementById('title').value;
-            const slug = 'article-1'
-            const title = 'title';
-            // Récupérez les autres valeurs de la même manière
+            // Récupérer les données du formulaire
+            const form = document.getElementById('editProductForm');
+            const formData = new FormData(form);
+            
+            // Ajouter les images téléchargées à formData
+            const imageInputs = document.getElementById('small-file-input').files;
+            for (let i = 0; i < imageInputs.length; i++) {
+                formData.append('new_images[]', imageInputs[i]);
+            }
         
-            // Création de l'objet FormData
-            let formData = new FormData();
-            formData.append('title', title);
-            // Ajoutez d'autres données au formData si nécessaire
+            // Récupérer le slug du produit dans l'URL (si nécessaire)
+            const urlParams = new URLSearchParams(window.location.search);
+            const slug = urlParams.get('slug');
         
             fetch('/edit-product/' + slug, {
                 method: 'POST',
@@ -76,8 +80,6 @@ document.addEventListener('DOMContentLoaded', function() {
             .catch(error => {
                 console.error('Erreur:', error);
             });
-        });
-        
+        });         
     }
-    
 });

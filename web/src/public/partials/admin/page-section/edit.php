@@ -6,7 +6,7 @@
     echo '<pre>';print_r($item);echo'</pre>';
 ?>
 
-<form method="post" action="" enctype="multipart/form-data" class="space-y-4">
+<form method="post" action="" enctype="multipart/form-data" class="space-y-4" id="editProductForm">
     <hr>
     <h2 class="text-lg font-semibold">Description du produit:</h2>
     <div>

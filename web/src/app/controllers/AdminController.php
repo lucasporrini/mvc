@@ -70,6 +70,10 @@ class AdminController
             $slug = strval($_GET['slug']);
             
             $item = $this->apiModel->get_product_by_slug($slug);
+            
+            if($item[0]['location_id']) {
+                $item[0]['location'] = $this->apiModel->get_location_by_id($item[0]['location_id']);
+            }
         } else {
             $item = null;
         };

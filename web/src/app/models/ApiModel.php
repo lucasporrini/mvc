@@ -179,6 +179,22 @@ class ApiModel
         return $json;
     }
 
+    public function get_location_by_id($location_id)
+    {
+         // Récupérer les données
+         $product = $this->api_call('/location/' . $location_id, getenv('token'));
+
+         // Vérifier si les produits existent
+         $json = json_decode($product, JSON_UNESCAPED_UNICODE);
+         if($json === false) {
+             http_response_code(500);
+             echo json_encode(['error' => 'Erreur interne']);
+        }
+        
+        // Retourner les données
+        return $json;
+    }
+
     public function get_company()
     {
         // Récupérer les données

@@ -62,7 +62,12 @@
                 <?php endforeach; ?>
             </select>
         </div>
-        <!-- Répéter les champs nécessaires ici si besoin -->
+        <?php if(isset($item['location']) && !empty($item['location'])){ ?>
+            <div class="flex flex-col gap-1">
+                <label for="location_address" class="block text-sm font-medium text-gray-700">Adresse</label>
+                <input type="text" name="location_address" id="location_address" class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50" value="<?= htmlspecialchars($item['location']['name']) ?>">
+            </div>
+        <?php } ?>
     </div>
 
     <hr>

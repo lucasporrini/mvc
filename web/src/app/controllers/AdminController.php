@@ -81,6 +81,13 @@ class AdminController
         // Récupérer la structure de la base de données
         $structure = $this->apiModel->get_structure("products");
 
+        // Récupérer les données de l'entreprise
+        $company = $this->apiModel->get_company();
+        $company['name'] = $company[0]['value'];
+        $company['address'] = $company[1]['value'];
+        unset($company[0]);
+        unset($company[1]);
+
         // Récupérer les enums
         $enum = [];
 
@@ -106,7 +113,8 @@ class AdminController
                 'header_informations' => $header_informations,
                 'products' => $products,
                 'item' => $item,
-                'enum' => $enum
+                'enum' => $enum,
+                'company' => $company
             ]
         );
     }

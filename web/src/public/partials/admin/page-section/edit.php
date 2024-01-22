@@ -4,6 +4,7 @@
     }
     $item = $item[0];
     echo '<pre>';print_r($item);echo'</pre>';
+    echo '<pre>';print_r($company);echo'</pre>';
 ?>
 
 <form method="post" action="" enctype="multipart/form-data" class="space-y-4" id="editProductForm">
@@ -35,19 +36,19 @@
     <div class="flex gap-3">
         <div>
             <label for="item-height" class="block text-sm font-medium text-gray-700">Hauteur (m)</label>
-            <input type="text" name="height" id="item-height" class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50" value="<?= htmlspecialchars($item['height']) ?>">
+            <input type="number" name="height" id="item-height" class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50" value="<?= htmlspecialchars($item['height']) ?>">
         </div>
         <div>
             <label for="item-width" class="block text-sm font-medium text-gray-700">Largeur (m)</label>
-            <input type="text" name="width" id="item-width" class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50" value="<?= htmlspecialchars($item['width']) ?>">
+            <input type="number" name="width" id="item-width" class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50" value="<?= htmlspecialchars($item['width']) ?>">
         </div>
         <div>
             <label for="item-depth" class="block text-sm font-medium text-gray-700">Profondeur (m)</label>
-            <input type="text" name="depth" id="item-depth" class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50" value="<?= htmlspecialchars($item['depth']) ?>">
+            <input type="number" name="depth" id="item-depth" class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50" value="<?= htmlspecialchars($item['depth']) ?>">
         </div>
         <div>
             <label for="item-weight" class="block text-sm font-medium text-gray-700">Poids (kg)</label>
-            <input type="text" name="weight" id="item-weight" class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50" value="<?= htmlspecialchars($item['weight']) ?>">
+            <input type="number" name="weight" id="item-weight" class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50" value="<?= htmlspecialchars($item['weight']) ?>">
         </div>
     </div>
 
@@ -66,6 +67,11 @@
             <div class="flex flex-col gap-1">
                 <label for="location_address" class="block text-sm font-medium text-gray-700">Adresse</label>
                 <input type="text" name="location_address" id="location_address" class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50" value="<?= htmlspecialchars($item['location']['name']) ?>">
+            </div>
+        <?php } else {?>
+            <div class="flex flex-col gap-1">
+                <label for="location_address" class="block text-sm font-medium text-gray-700">Adresse</label>
+                <input type="text" name="location_address" id="location_address" class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50 disabled:bg-slate-50 disabled:text-slate-500 disabled:border-slate-200 disabled:shadow-none" value="<?= htmlspecialchars($company['address']) ?>" disabled>
             </div>
         <?php } ?>
     </div>

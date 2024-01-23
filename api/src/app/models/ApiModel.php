@@ -68,6 +68,11 @@ class ApiModel
             return false; // Échec de l'authentification
         }
     }
+
+    public function check_page($page_name)
+    {
+        return $this->db->simpleSelect('*', 'pages', ['page_name' => $page_name]);
+    }
     
     public function get_menu()
     {

@@ -33,17 +33,26 @@
       <a class="flex-none text-xl font-semibold dark:text-white" href="/" aria-label="Brand">Reborn</a>
     </div>
     <nav class="hs-accordion-group p-6 w-full flex flex-col flex-wrap">
-      <ul class="space-y-1.5">
-        <?php foreach($header_informations['menu'] as $item) { 
-            if($item['is_parent'] == 1 && $item['has_child'] == 0) { ?>
-                <li>
-                    <a class="w-full flex items-center gap-x-3.5 py-2 px-2.5 text-sm text-slate-700 rounded-lg hover:bg-gray-100" href="<?= $item['url'] ?>">
-                        <?= $item['name'] ?>
-                    </a>
-                </li>
-        <? }
-        } ?>
-      </ul>
+        <ul class="space-y-1.5">
+            <?php foreach ($header_informations['menu'] as $item): ?>
+                <?php if ($item['is_parent'] == 1 && $item['has_child'] == 0): ?>
+                    <?php if ($item['superadmin'] == 0): ?>
+                        <li>
+                            <a class="w-full flex items-center gap-x-3.5 py-2 px-2.5 text-sm text-slate-700 rounded-lg hover:bg-gray-100" href="<?= htmlspecialchars($item['url']) ?>">
+                                <?= htmlspecialchars($item['name']) ?>
+                            </a>
+                        </li>
+                    <?php endif; ?>
+                    <?php if ($item['superadmin'] == 1 && $_SESSION['user']['role'] == 'superadmin'): ?>
+                        <li>
+                            <a class="w-full flex items-center gap-x-3.5 py-2 px-2.5 text-sm text-slate-700 rounded-lg hover:bg-gray-100" href="<?= htmlspecialchars($item['url']) ?>">
+                                <?= htmlspecialchars($item['name']) ?>
+                            </a>
+                        </li>
+                    <?php endif; ?>
+                <?php endif; ?>
+            <?php endforeach; ?>
+        </ul>
     </nav>
     <div class="py-3 px-7 -m-2 bg-gray-100 rounded-t-lg dark:bg-gray-700">
         <p class="text-sm text-gray-500 dark:text-gray-400">Connecté en tant que</p>

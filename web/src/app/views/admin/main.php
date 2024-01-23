@@ -14,6 +14,13 @@
     <div style="width: 200 !important">
         <canvas id="productChart"></canvas>
     </div>
+    <div>
+        <pre>
+            <?php
+                print_r($_SESSION);
+            ?>
+        </pre>
+    </div>
     <!-- End Page Heading -->
   </div>
   <!-- End Content -->

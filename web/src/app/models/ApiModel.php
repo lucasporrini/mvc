@@ -33,6 +33,21 @@ class ApiModel
         return $response;
     }
 
+    public function checkPage($pageName)
+    {
+        // Récupérer les données
+        $page = $this->api_call('/check_page/' . $pageName, getenv('token'));
+
+        // Vérifier si la page existe
+        $json = json_decode($page, JSON_UNESCAPED_UNICODE);
+        if($json === false) {
+            return false;
+        }
+
+        // Retourner les données
+        return $json;
+    }
+
     public function get_header()
     {
         // Récupérer les données

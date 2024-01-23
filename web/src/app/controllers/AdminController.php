@@ -44,14 +44,56 @@ class AdminController
         ];
     }
 
+    public function getPage($pageName, $userAuth)
+    {
+        // Checker si la page existe
+        $isExistingPage = $this->apiModel->checkPage($pageName);
+
+        // Si la page existe
+        if($isExistingPage['page_active'] == 1)
+        {   
+            // Si la page est admin
+            if($isExistingPage['page_admin'] == 1 && $isExistingPage['page_superadmin'] == 0) {
+                // Checker si l'utilisateur est admin
+                if($userAuth == 'admin' || $userAuth == 'superadmin') {
+                    return true;
+                } else {
+                    return false;
+                }
+            // Si la page est superadmin
+            } else if($isExistingPage['page_admin'] == 1 && $isExistingPage['page_superadmin'] == 1) {
+                // Checker si l'utilisateur est superadmin
+                if($userAuth == 'superadmin') {
+                    return true;
+                } else {
+                    return false;
+                }
+            } else {
+                return false;
+            }
+        } else {
+            return false;
+        }
+    }
+    
     public function render_admin()
     {
+        // Checker la page
+        $page = 'main';
+        $role = $_SESSION['user']['role'];
+        $checkPage = $this->getPage($page, $role);
+
+        if(!$checkPage) {
+            header('Location: /404');
+            exit;
+        }
+
         // Récupérer les données du header
         $header_informations = $this->get_header_informations();
 
         // Inclure la vue correspondante
         echo $this->pages->render(
-            'admin/main',
+            'admin/' . $page,
             [
                 'title' => 'Page d\'administration',
                 'title_in_page' => 'Bienvenue sur votre dashboard',
@@ -62,6 +104,16 @@ class AdminController
 
     public function render_admin_products()
     {
+        // Checker la page
+        $page = 'products';
+        $role = $_SESSION['user']['role'];
+        $checkPage = $this->getPage($page, $role);
+
+        if(!$checkPage) {
+            header('Location: /404');
+            exit;
+        }
+
         // Récupérer les données du header
         $header_informations = $this->get_header_informations();
 
@@ -109,7 +161,7 @@ class AdminController
 
         // Inclure la vue correspondante
         echo $this->pages->render(
-            'admin/products',
+            'admin/' . $page,
             [
                 'title' => 'Page d\'administration',
                 'title_in_page' => 'Bienvenue sur votre dashboard',

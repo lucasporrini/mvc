@@ -3,6 +3,7 @@
 
 // Route pour afficher les pages du site
 //$router->method('url', [$MainController, 'method_name'], $requireAuth=false, $composedUrl = false);
+$router->get('/check_page/:page_name', [$ApiController, 'check_page']);
 $router->get('/get_header', [$ApiController, 'get_header']);
 $router->get(('/get_header_admin'), [$ApiController, 'get_header_admin']);
 $router->post('/login', [$ApiController, 'login']);

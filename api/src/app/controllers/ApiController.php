@@ -11,6 +11,16 @@ class ApiController
         $this->apiModel = new ApiModel();
     }
 
+    public function check_page($pageName)
+    {
+        // Récupérer les données
+        $page = $this->apiModel->check_page($pageName);
+
+        // Retourner les données en json
+        header('Content-Type: application/json');
+        echo json_encode($page, JSON_UNESCAPED_UNICODE);
+    }
+
     public function get_header()
     {
         // Récupérer les données

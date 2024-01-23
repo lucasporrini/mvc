@@ -2,6 +2,7 @@ document.addEventListener('DOMContentLoaded', function() {
     // if the currant page is "admin-products?page=edit&slug=..." then we want to display the "edit" tab
     const urlParams = new URLSearchParams(window.location.search);
     const tab = urlParams.get('page');
+
     if (tab === 'edit') {
         const imagesUpload = document.getElementById('images-upload');
 
@@ -83,4 +84,19 @@ document.addEventListener('DOMContentLoaded', function() {
         });
                
     }
+
+    // actualize the adress field with the selected adress
+    const addressInput = document.getElementById('location_address').querySelector('input');
+    const adressSelect = document.getElementById('location_select');
+
+    adressSelect.addEventListener('change', function() {
+        this.querySelectorAll('option').forEach(function(option) {
+            if (option.selected) {
+                addressInput.value = option.getAttribute('data-place') + ',' + option.getAttribute('data-address');
+            }
+        });
+    });
+
+    // trigger the change one time
+    adressSelect.dispatchEvent(new Event('change'));
 });

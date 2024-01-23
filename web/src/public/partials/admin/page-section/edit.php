@@ -65,8 +65,16 @@
         </div>
         <?php if(isset($item['location']) && !empty($item['location'])){ ?>
             <div class="flex flex-col gap-1">
+                <label for="location_name" class="block text-sm font-medium text-gray-700">Choix du chantier</label>
+                <select name="location_name" id="location_select" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-32 p-2.5">
+                    <?php foreach($locations as $loc) { ?>
+                        <option value="<?= htmlspecialchars($loc['id']) ?>" <?= $loc['id'] == $item['location']['id'] ? 'selected' : '' ?> data-place="<?= $loc['place'] ?>" data-address="<?= $loc['address'] ?>"><?= htmlspecialchars($loc['name']) ?></option>
+                    <?php } ?>
+                </select>
+            </div>
+            <div class="flex flex-col gap-1" id="location_address">
                 <label for="location_address" class="block text-sm font-medium text-gray-700">Adresse</label>
-                <input type="text" name="location_address" id="location_address" class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50" value="<?= htmlspecialchars($item['location']['name']) ?>">
+                <input type="text" name="location_address" id="location_address" class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50 disabled:bg-slate-50 disabled:text-slate-500 disabled:border-slate-200 disabled:shadow-none" value="" disabled>
             </div>
         <?php } else {?>
             <div class="flex flex-col gap-1">

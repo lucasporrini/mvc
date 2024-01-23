@@ -127,7 +127,11 @@ class ApiModel
     public function get_subcategories()
     {
         return $this->db->select('*', 'subcategories');
-    
+    }
+
+    public function get_locations()
+    {
+        return $this->db->select('*', 'locations', ['active' => 1]);
     }
 
     public function get_location_by_id($id)

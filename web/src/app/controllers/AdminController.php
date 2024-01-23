@@ -101,6 +101,9 @@ class AdminController
             }
         }
 
+        // Récupérer les différentes géographies de chantier
+        $locations = $this->apiModel->get_locations();
+
         // Récupérer les 50 derniers produits
         $products = $this->apiModel->get_last_fiveteen_products();
 
@@ -114,7 +117,8 @@ class AdminController
                 'products' => $products,
                 'item' => $item,
                 'enum' => $enum,
-                'company' => $company
+                'company' => $company,
+                'locations' => $locations
             ]
         );
     }

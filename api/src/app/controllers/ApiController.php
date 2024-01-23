@@ -240,6 +240,22 @@ class ApiController
         }
     }
 
+    public function get_locations()
+    {
+        // On récupère le token dans le header
+        $headers = apache_request_headers();
+        $token = $headers['Authorization'];
+        
+        if($this->apiModel->middleware_auth($token)) {
+            // Récupérer les données
+            $locations = $this->apiModel->get_locations();
+
+            // Retourner les données en json
+            header('Content-Type: application/json');
+            echo json_encode($locations, JSON_UNESCAPED_UNICODE);
+        }
+    }
+
     public function get_location_by_id($id)
     {
         // On récupère le token dans le header

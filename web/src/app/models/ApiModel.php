@@ -312,6 +312,21 @@ class ApiModel
         return $json;
     }
 
+    public function get_locations()
+    {
+        // Récupérer les données
+        $locations = $this->api_call('/locations', getenv('token'));
+
+        // Vérifier si la société existe
+        $json = json_decode($locations, JSON_UNESCAPED_UNICODE);
+        if($json === false) {
+            return false;
+        }
+        
+        // Retourner les données
+        return $json;
+    }
+
     public function delete_product($slug)
     {
         // Récupérer les données
